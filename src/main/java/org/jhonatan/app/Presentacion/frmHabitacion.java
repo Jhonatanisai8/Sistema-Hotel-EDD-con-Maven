@@ -9,20 +9,20 @@ import org.jhonatan.app.Logica.FHabitacion;
  * @author JHONATAN
  */
 public class frmHabitacion extends javax.swing.JFrame {
-
+    
     public frmHabitacion() {
         initComponents();
         this.setTitle("Registro de habitaciones");
         FlatMaterialPalenightIJTheme.setup();
     }
     private String accion = "guardar";
-
+    
     void ocultarColumnas() {
         tblDatos.getColumnModel().getColumn(0).setMaxWidth(0);
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
     }
-
+    
     void inHabilitar() {
         txtId.setVisible(false);
         cbxPiso.setEnabled(false);
@@ -44,10 +44,10 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtCaracteristicas.setText("");
         txtDescripcion.setText("");
     }
-
+    
     void habilitar() {
         txtId.setVisible(false);
-
+        
         cbxPiso.setEnabled(true);
         txtNumeroHabi.setEnabled(true);
         txtDescripcion.setEnabled(true);
@@ -67,7 +67,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtCaracteristicas.setText("");
         txtDescripcion.setText("");
     }
-
+    
     void mostrarDatos(String buscar) {
         try {
             DefaultTableModel modelo;
@@ -75,26 +75,37 @@ public class frmHabitacion extends javax.swing.JFrame {
 
             //llamamos al funcion mostrar de la clase fhHABITACION
             modelo = func.mostrarDatosHabitacion(buscar);
-
+            
             tblDatos.setModel(modelo);
             ocultarColumnas();
-
+            
             lblTotalRegistros.setText("Total de registros: " + func.totalRegistros);
         } catch (Exception e) {
             System.out.println("Error al mostrar: " + e.toString());
         }
     }
-
+    
     void nuevaHabitacion() {
         habilitar();
         btnRegistrar.setText("Guardar");
         accion = "guardar";
     }
-
+    
     void guardarRegistro() {
-
+        
     }
-
+    
+    public boolean validarCampos() {
+        return txtNumeroHabi.getText().trim().isEmpty()
+                || cbxPiso.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")
+                || txtDescripcion.getText().trim().isEmpty()
+                || txtCaracteristicas.getText().trim().isEmpty()
+                || txtPrecioUnitario.getText().trim().isEmpty()
+                || cbxEstado.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")
+                || cbxTipoHabitacion.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=");
+        
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -186,7 +197,7 @@ public class frmHabitacion extends javax.swing.JFrame {
 
         btnRegistrar.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guardar.png"))); // NOI18N
-        btnRegistrar.setText("Registrar");
+        btnRegistrar.setText("Guardar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -233,12 +244,12 @@ public class frmHabitacion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxEstado, 0, 0, Short.MAX_VALUE)
-                    .addComponent(cbxTipoHabitacion, 0, 140, Short.MAX_VALUE))
+                    .addComponent(cbxTipoHabitacion, 0, 143, Short.MAX_VALUE))
                 .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
