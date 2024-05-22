@@ -9,25 +9,25 @@ import org.jhonatan.app.Datos.Habitacion;
  * @author Jhonatan
  */
 public class FHabitacion {
-    
+
     Conexion conexion = Conexion.getInstancia();
-    
+
     private String sql = "";
     public int totalRegistros;
 
     //funciones
-    public DefaultTableModel mostrarDatos(String buscar) {
+    public DefaultTableModel mostrarDatosHabitacion(String buscar) {
         Connection conex = conexion.conectarBD();
         DefaultTableModel modelo;
         String[] cabezera = {"ID", "NÚMERO", "PISO", "DESCRIPCIÓN", "CARACTERISTICAS", "PRECIO DIARIO", "ESTADO", "TIPO DE HABITACIÓN"};
         String[] registros = new String[8];
         totalRegistros = 0;
-        
+
         modelo = new DefaultTableModel(null, cabezera);
 
         //consulta
         sql = "SELECT * FROM habitacion WHERE piso LIKE '%" + buscar + "'% ORDER BY idhabitacion";
-        
+
         try {
             Statement st = conex.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -52,14 +52,14 @@ public class FHabitacion {
             return null;
         }
     }
-    
+
     public boolean insertarHabitacion(Habitacion habitacion) {
         sql = "INSERT INTO habitacion"
                 + " (numero,piso,descripcion,caracteristicas,precio_diario,estado,tipo_habitacion)"
                 + "  VALUES (?,?,?,?,?,?,?)";
         try {
             Connection conex = conexion.conectarBD();
-            
+
             PreparedStatement pst = conex.prepareStatement(sql);
 
             //insertamos
@@ -70,18 +70,18 @@ public class FHabitacion {
             pst.setDouble(5, habitacion.getPrecioDiario());
             pst.setString(6, habitacion.getEstado());
             pst.setString(7, habitacion.getTipoHabitacion());
-            
+
             conexion.desconectarBD();
             return pst.executeUpdate() != 0;
-            
+
         } catch (SQLException e) {
             System.out.println("Error al insertar habitacion: "
                     + e.toString());
             return false;
         }
     }
-    
-    public boolean modificar(Habitacion habitacion) {
+
+    public boolean modificarHabitacion(Habitacion habitacion) {
         sql = "UPDATE habitacion SET numero = ?,piso = ?,descripcion = ?,"
                 + "caracteristicas = ?,precio_diario = ?,estado = ?, tipo_habitacion WHERE idhabitacion = ?";
         try {
@@ -97,11 +97,27 @@ public class FHabitacion {
             pst.setString(6, habitacion.getEstado());
             pst.setString(7, habitacion.getTipoHabitacion());
             pst.setInt(8, habitacion.getIdHabitacion());
-            
+
             conexion.desconectarBD();
             return pst.executeUpdate() != 0;
         } catch (SQLException e) {
             System.out.println("Error al modificar habitacion: " + e.toString());
+            return false;
+        }
+    }
+
+    public boolean eliminarHabitacion(Habitacion habitacion) {
+        sql = "DELETE * from habitacion WHERE idhabitacion = ?";
+        try {
+            Connection conex = conexion.conectarBD();
+            PreparedStatement pst = conex.prepareStatement(sql);
+
+            //eliminamos
+            pst.setInt(1, habitacion.getIdHabitacion());
+            conexion.desconectarBD();
+            return pst.executeUpdate() != 0;
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar la habitacion: " + e.toString());
             return false;
         }
     }
