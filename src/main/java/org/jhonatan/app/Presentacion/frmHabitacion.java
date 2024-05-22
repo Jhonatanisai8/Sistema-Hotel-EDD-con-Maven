@@ -7,20 +7,20 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialPaleni
  * @author JHONATAN
  */
 public class frmHabitacion extends javax.swing.JFrame {
-    
+
     public frmHabitacion() {
         initComponents();
         this.setTitle("Registro de habitaciones");
         FlatMaterialPalenightIJTheme.setup();
     }
     private String accion = "guardar";
-    
+
     void ocultarColumnas() {
         tblDatos.getColumnModel().getColumn(0).setMaxWidth(0);
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
     }
-    
+
     void inHabilitar() {
         txtId.setVisible(false);
         cbxPiso.setEnabled(false);
@@ -42,7 +42,30 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtCaracteristicas.setText("");
         txtDescripcion.setText("");
     }
-    
+
+    void haabilitar() {
+        txtId.setVisible(false);
+
+        cbxPiso.setEnabled(true);
+        txtNumeroHabi.setEnabled(true);
+        txtDescripcion.setEnabled(true);
+        txtCaracteristicas.setEnabled(true);
+        txtPrecioUnitario.setEnabled(true);
+        cbxEstado.setEnabled(true);
+        cbxTipoHabitacion.setEnabled(true);
+
+        //botones
+        btnRegistrar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnEliminar.setEnabled(true);
+
+        //cajas de texto 
+        txtId.setText("");
+        txtPrecioUnitario.setText("");
+        txtCaracteristicas.setText("");
+        txtDescripcion.setText("");
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
