@@ -45,7 +45,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtDescripcion.setText("");
     }
 
-    void haabilitar() {
+    void habilitar() {
         txtId.setVisible(false);
 
         cbxPiso.setEnabled(true);
@@ -83,6 +83,16 @@ public class frmHabitacion extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error al mostrar: " + e.toString());
         }
+    }
+
+    void nuevaHabitacion() {
+        habilitar();
+        btnRegistrar.setText("Guardar");
+        accion = "guardar";
+    }
+
+    void guardarRegistro() {
+
     }
 
     @SuppressWarnings("unchecked")
@@ -168,10 +178,20 @@ public class frmHabitacion extends javax.swing.JFrame {
         btnNuevo.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nuevo (2).png"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnRegistrar.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guardar.png"))); // NOI18N
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelar.png"))); // NOI18N
@@ -397,6 +417,14 @@ public class frmHabitacion extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        nuevaHabitacion();
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        guardarRegistro();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
