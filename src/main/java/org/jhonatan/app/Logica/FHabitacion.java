@@ -26,7 +26,7 @@ public class FHabitacion {
         modelo = new DefaultTableModel(null, cabezera);
 
         //consulta
-        sql = "SELECT * FROM habitacion WHERE piso LIKE '%" + buscar + "'% ORDER BY idhabitacion";
+        sql = "SELECT * FROM habitacion WHERE piso LIKE '%" + buscar + "%' ORDER BY idhabitacion";
 
         try {
             Statement st = conex.createStatement();
@@ -71,7 +71,6 @@ public class FHabitacion {
             pst.setString(6, habitacion.getEstado());
             pst.setString(7, habitacion.getTipoHabitacion());
 
-            conexion.desconectarBD();
             return pst.executeUpdate() != 0;
 
         } catch (SQLException e) {
@@ -98,7 +97,7 @@ public class FHabitacion {
             pst.setString(7, habitacion.getTipoHabitacion());
             pst.setInt(8, habitacion.getIdHabitacion());
 
-            conexion.desconectarBD();
+          //  conexion.desconectarBD();
             return pst.executeUpdate() != 0;
         } catch (SQLException e) {
             System.out.println("Error al modificar habitacion: " + e.toString());
@@ -114,7 +113,7 @@ public class FHabitacion {
 
             //eliminamos
             pst.setInt(1, habitacion.getIdHabitacion());
-            conexion.desconectarBD();
+            //conexion.desconectarBD();
             return pst.executeUpdate() != 0;
         } catch (SQLException e) {
             System.out.println("Error al eliminar la habitacion: " + e.toString());
