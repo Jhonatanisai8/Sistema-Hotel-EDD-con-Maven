@@ -1,6 +1,8 @@
 package org.jhonatan.app.Presentacion;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialPalenightIJTheme;
+import javax.swing.table.DefaultTableModel;
+import org.jhonatan.app.Logica.FHabitacion;
 
 /**
  *
@@ -66,6 +68,23 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtDescripcion.setText("");
     }
 
+    void mostrarDatos(String buscar) {
+        try {
+            DefaultTableModel modelo;
+            FHabitacion func = new FHabitacion();
+
+            //llamamos al funcion mostrar de la clase fhHABITACION
+            modelo = func.mostrarDatosHabitacion(buscar);
+
+            tblDatos.setModel(modelo);
+            ocultarColumnas();
+
+            lblTotalRegistros.setText("Total de registros: " + func.totalRegistros);
+        } catch (Exception e) {
+            System.out.println("Error al mostrar: " + e.toString());
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -102,7 +121,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblTotalRegistros = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -290,8 +309,8 @@ public class frmHabitacion extends javax.swing.JFrame {
 
         jLabel10.setText("Buscar:");
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Symbol", 0, 15)); // NOI18N
-        jLabel11.setText("Registros");
+        lblTotalRegistros.setFont(new java.awt.Font("Segoe UI Symbol", 0, 15)); // NOI18N
+        lblTotalRegistros.setText("Registros");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -317,7 +336,7 @@ public class frmHabitacion extends javax.swing.JFrame {
                 .addGap(378, 378, 378))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(447, 447, 447)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -340,7 +359,7 @@ public class frmHabitacion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
 
@@ -426,7 +445,6 @@ public class frmHabitacion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxTipoHabitacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -441,6 +459,7 @@ public class frmHabitacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblTotalRegistros;
     private javax.swing.JTable tblDatos;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextArea txtCaracteristicas;
