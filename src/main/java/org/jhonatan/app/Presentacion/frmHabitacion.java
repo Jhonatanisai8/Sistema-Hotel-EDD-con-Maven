@@ -7,20 +7,31 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialPaleni
  * @author JHONATAN
  */
 public class frmHabitacion extends javax.swing.JFrame {
-
+    
     public frmHabitacion() {
         initComponents();
         this.setTitle("Registro de habitaciones");
         FlatMaterialPalenightIJTheme.setup();
     }
     private String accion = "guardar";
-
+    
     void ocultarColumnas() {
         tblDatos.getColumnModel().getColumn(0).setMaxWidth(0);
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
     }
-
+    
+    void inHabilitar() {
+        txtId.setVisible(false);
+        cbxPiso.setEnabled(false);
+        txtNumeroHabi.setEnabled(false);
+        txtDescripcion.setEnabled(false);
+        txtCaracteristicas.setEnabled(false);
+        txtPrecioUnitario.setEnabled(false);
+        cbxEstado.setEnabled(false);
+        cbxTipoHabitacion.setEnabled(false);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -28,9 +39,9 @@ public class frmHabitacion extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
-        tstNumeroHabi = new javax.swing.JTextField();
+        txtNumeroHabi = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbxPiso = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
@@ -69,8 +80,8 @@ public class frmHabitacion extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         jLabel3.setText("Nº de Habitacion:");
 
-        jComboBox1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        cbxPiso.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
+        cbxPiso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         jLabel4.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         jLabel4.setText("Descripcion:");
@@ -128,13 +139,13 @@ public class frmHabitacion extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, 0, 0, Short.MAX_VALUE)
+                        .addComponent(cbxPiso, 0, 0, Short.MAX_VALUE)
                         .addGap(104, 104, 104))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tstNumeroHabi)
+                            .addComponent(txtNumeroHabi)
                             .addComponent(txtId))
                         .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -169,11 +180,11 @@ public class frmHabitacion extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tstNumeroHabi, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                    .addComponent(txtNumeroHabi, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                    .addComponent(cbxPiso, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -377,8 +388,8 @@ public class frmHabitacion extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cbxEstado;
+    private javax.swing.JComboBox<String> cbxPiso;
     private javax.swing.JComboBox<String> cbxTipoHabitacion;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -397,11 +408,11 @@ public class frmHabitacion extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable tblDatos;
-    private javax.swing.JTextField tstNumeroHabi;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextArea txtCaracteristicas;
     private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNumeroHabi;
     private javax.swing.JTextField txtPrecioUnitario;
     // End of variables declaration//GEN-END:variables
 }
