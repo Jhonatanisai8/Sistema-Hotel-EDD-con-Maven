@@ -35,6 +35,12 @@ public class frmHabitacion extends javax.swing.JFrame {
         btnRegistrar.setEnabled(false);
         btnCancelar.setEnabled(false);
         btnEliminar.setEnabled(false);
+
+        //cajas de texto 
+        txtId.setText("");
+        txtPrecioUnitario.setText("");
+        txtCaracteristicas.setText("");
+        txtDescripcion.setText("");
     }
     
     @SuppressWarnings("unchecked")
