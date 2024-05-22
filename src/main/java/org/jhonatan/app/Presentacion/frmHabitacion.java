@@ -2,6 +2,8 @@ package org.jhonatan.app.Presentacion;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialPalenightIJTheme;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import org.jhonatan.app.Datos.Habitacion;
 import org.jhonatan.app.Logica.FHabitacion;
@@ -93,35 +95,32 @@ public class frmHabitacion extends javax.swing.JFrame {
         accion = "guardar";
     }
 
-    public void validarCampos() {
-        if (txtNumeroHabi.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "DEBES INGRESAR EL NÚMERO DE LA HABITACIÓN", "ATENCIÓN", 3);
+    private String validarCampos() {
+        if (txtNumeroHabi.getText().trim().isEmpty() || (Integer.parseInt(txtNumeroHabi.getText()) < 0)) {
             txtNumeroHabi.requestFocus();
-            return;
+            return "Número";
         }
 
         if (txtDescripcion.getText().length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "DEBES INGRESAR UNA DESCRICIÓON DE LA HABITACIÓN", "ATENCIÓN", 3);
             txtDescripcion.requestFocus();
-            return;
+            return "Descripción";
         }
 
         if (txtCaracteristicas.getText().length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "DEBES INGRESAR UNA CARACTERISTICA DE LA HABITACIÓN", "ATENCIÓN", 3);
             txtCaracteristicas.requestFocus();
-            return;
+            return "Caracteristicas";
         }
 
         if (txtPrecioUnitario.getText().length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "DEBES INGRESAR EL PRECIO DIARIO DE LA HABITACIÓN", "ATENCIÓN", 3);
             txtPrecioUnitario.requestFocus();
-            return;
+            return "Precio Unitario";
         }
-
+        //si aquellos campos estan vacios returnamos un texto vacio
+        return "";
     }
 
     void guardarRegistro() {
-        validarCampos();
+        //llamamos al metodo
         Habitacion habitacion = new Habitacion();
         FHabitacion fHabitacion = new FHabitacion();
 
