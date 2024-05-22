@@ -30,6 +30,11 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtPrecioUnitario.setEnabled(false);
         cbxEstado.setEnabled(false);
         cbxTipoHabitacion.setEnabled(false);
+
+        //botones
+        btnRegistrar.setEnabled(false);
+        btnCancelar.setEnabled(false);
+        btnEliminar.setEnabled(false);
     }
     
     @SuppressWarnings("unchecked")
