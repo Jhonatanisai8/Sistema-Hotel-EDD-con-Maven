@@ -122,7 +122,7 @@
                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="btnNuevo" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btnRegistrar" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btnGuardar" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnCancelar" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -180,7 +180,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnNuevo" min="-2" pref="44" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnRegistrar" pref="44" max="32767" attributes="0"/>
+                          <Component id="btnGuardar" pref="44" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnCancelar" pref="45" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -356,7 +356,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnRegistrar">
+        <Component class="javax.swing.JButton" name="btnGuardar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="0"/>
@@ -367,7 +367,7 @@
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelar">

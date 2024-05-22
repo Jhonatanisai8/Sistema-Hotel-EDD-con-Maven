@@ -1,7 +1,9 @@
 package org.jhonatan.app.Presentacion;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialPalenightIJTheme;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jhonatan.app.Datos.Habitacion;
 import org.jhonatan.app.Logica.FHabitacion;
 
 /**
@@ -9,20 +11,20 @@ import org.jhonatan.app.Logica.FHabitacion;
  * @author JHONATAN
  */
 public class frmHabitacion extends javax.swing.JFrame {
-    
+
     public frmHabitacion() {
         initComponents();
         this.setTitle("Registro de habitaciones");
         FlatMaterialPalenightIJTheme.setup();
     }
     private String accion = "guardar";
-    
+
     void ocultarColumnas() {
         tblDatos.getColumnModel().getColumn(0).setMaxWidth(0);
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
     }
-    
+
     void inHabilitar() {
         txtId.setVisible(false);
         cbxPiso.setEnabled(false);
@@ -34,7 +36,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         cbxTipoHabitacion.setEnabled(false);
 
         //botones
-        btnRegistrar.setEnabled(false);
+        btnGuardar.setEnabled(false);
         btnCancelar.setEnabled(false);
         btnEliminar.setEnabled(false);
 
@@ -44,10 +46,10 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtCaracteristicas.setText("");
         txtDescripcion.setText("");
     }
-    
+
     void habilitar() {
         txtId.setVisible(false);
-        
+
         cbxPiso.setEnabled(true);
         txtNumeroHabi.setEnabled(true);
         txtDescripcion.setEnabled(true);
@@ -57,7 +59,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         cbxTipoHabitacion.setEnabled(true);
 
         //botones
-        btnRegistrar.setEnabled(true);
+        btnGuardar.setEnabled(true);
         btnCancelar.setEnabled(true);
         btnEliminar.setEnabled(true);
 
@@ -67,7 +69,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtCaracteristicas.setText("");
         txtDescripcion.setText("");
     }
-    
+
     void mostrarDatos(String buscar) {
         try {
             DefaultTableModel modelo;
@@ -75,37 +77,84 @@ public class frmHabitacion extends javax.swing.JFrame {
 
             //llamamos al funcion mostrar de la clase fhHABITACION
             modelo = func.mostrarDatosHabitacion(buscar);
-            
+
             tblDatos.setModel(modelo);
             ocultarColumnas();
-            
+
             lblTotalRegistros.setText("Total de registros: " + func.totalRegistros);
         } catch (Exception e) {
             System.out.println("Error al mostrar: " + e.toString());
         }
     }
-    
+
     void nuevaHabitacion() {
         habilitar();
-        btnRegistrar.setText("Guardar");
+        btnGuardar.setText("Guardar");
         accion = "guardar";
     }
-    
+
+    public void validarCampos() {
+        if (txtNumeroHabi.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "DEBES INGRESAR EL NÚMERO DE LA HABITACIÓN", "ATENCIÓN", 3);
+            txtNumeroHabi.requestFocus();
+            return;
+        }
+
+        if (txtDescripcion.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "DEBES INGRESAR UNA DESCRICIÓON DE LA HABITACIÓN", "ATENCIÓN", 3);
+            txtDescripcion.requestFocus();
+            return;
+        }
+
+        if (txtCaracteristicas.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "DEBES INGRESAR UNA CARACTERISTICA DE LA HABITACIÓN", "ATENCIÓN", 3);
+            txtCaracteristicas.requestFocus();
+            return;
+        }
+
+        if (txtPrecioUnitario.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "DEBES INGRESAR EL PRECIO DIARIO DE LA HABITACIÓN", "ATENCIÓN", 3);
+            txtPrecioUnitario.requestFocus();
+            return;
+        }
+
+    }
+
     void guardarRegistro() {
-        
+        validarCampos();
+        Habitacion habitacion = new Habitacion();
+        FHabitacion fHabitacion = new FHabitacion();
+
+        habitacion.setNumero(txtNumeroHabi.getText());
+
+        int seleccion = cbxPiso.getSelectedIndex();
+        habitacion.setPiso(cbxPiso.getItemAt(seleccion));
+
+        habitacion.setDescripcion(txtDescripcion.getText());
+        habitacion.setCaracteristicas(txtCaracteristicas.getText());
+        habitacion.setPrecioDiario(Double.parseDouble(txtPrecioUnitario.getText()));
+
+        seleccion = cbxEstado.getSelectedIndex();
+        habitacion.setEstado(cbxEstado.getItemAt(seleccion));
+
+        seleccion = cbxTipoHabitacion.getSelectedIndex();
+        habitacion.setTipoHabitacion(cbxTipoHabitacion.getItemAt(seleccion));
+
+        if (accion.equalsIgnoreCase("Guardar")) {
+            if (fHabitacion.insertarHabitacion(habitacion)) {
+                JOptionPane.showMessageDialog(rootPane, "LA HABITACIÓN FUE REGISTRADA CON EXÍTO", "ATENCIÓN", 2);
+
+                //llamos al procecimiento mostrar
+                mostrarDatos("");
+            }
+        } else if (accion.equalsIgnoreCase("EDITAR")) {
+            habitacion.setIdHabitacion(Integer.parseInt(txtId.getText()));
+            if (fHabitacion.modificarHabitacion(habitacion)) {
+                JOptionPane.showMessageDialog(rootPane, "LA HABITACIÓN FUE EDITADA EXITOSAMENTE", "ATENCIÓN", 2);
+            }
+        }
     }
-    
-    public boolean validarCampos() {
-        return txtNumeroHabi.getText().trim().isEmpty()
-                || cbxPiso.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")
-                || txtDescripcion.getText().trim().isEmpty()
-                || txtCaracteristicas.getText().trim().isEmpty()
-                || txtPrecioUnitario.getText().trim().isEmpty()
-                || cbxEstado.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")
-                || cbxTipoHabitacion.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=");
-        
-    }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -129,7 +178,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         cbxTipoHabitacion = new javax.swing.JComboBox<>();
         btnNuevo = new javax.swing.JButton();
-        btnRegistrar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -195,12 +244,12 @@ public class frmHabitacion extends javax.swing.JFrame {
             }
         });
 
-        btnRegistrar.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
-        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guardar.png"))); // NOI18N
-        btnRegistrar.setText("Guardar");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
 
@@ -253,7 +302,7 @@ public class frmHabitacion extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -298,7 +347,7 @@ public class frmHabitacion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -433,9 +482,9 @@ public class frmHabitacion extends javax.swing.JFrame {
         nuevaHabitacion();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         guardarRegistro();
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -476,8 +525,8 @@ public class frmHabitacion extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cbxEstado;
     private javax.swing.JComboBox<String> cbxPiso;
