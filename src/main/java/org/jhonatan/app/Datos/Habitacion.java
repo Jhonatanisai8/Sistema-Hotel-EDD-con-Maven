@@ -9,15 +9,17 @@ public class Habitacion {
     private int idHabitacion;
     private String numero;
     private String piso;
+    private String descripcion;
     private String caracteristicas;
     private double precioDiario;
     private String estado;
     private String tipoHabitacion;
 
-    public Habitacion(int idHabitacion, String numero, String piso, String caracteristicas, double precioDiario, String estado, String tipoHabitacion) {
+    public Habitacion(int idHabitacion, String numero, String piso, String descripcion, String caracteristicas, double precioDiario, String estado, String tipoHabitacion) {
         this.idHabitacion = idHabitacion;
         this.numero = numero;
         this.piso = piso;
+        this.descripcion = descripcion;
         this.caracteristicas = caracteristicas;
         this.precioDiario = precioDiario;
         this.estado = estado;
@@ -51,8 +53,16 @@ public class Habitacion {
         this.piso = piso;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
     public String getCaracteristicas() {
         return caracteristicas;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public void setCaracteristicas(String caracteristicas) {
@@ -83,5 +93,4 @@ public class Habitacion {
         this.tipoHabitacion = tipoHabitacion;
     }
 
-    
 }
