@@ -421,6 +421,11 @@ public class frmHabitacion extends javax.swing.JFrame {
                 "ID", "Nº Habitacion", "Piso", "Descripcion", "Caracteristicas", "Precio Diario", "Estado", "Tipo de Habitacion"
             }
         ));
+        tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatosMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblDatos);
 
         txtBuscar.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
@@ -610,6 +615,24 @@ public class frmHabitacion extends javax.swing.JFrame {
     private void cbxTipoHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoHabitacionActionPerformed
         cbxTipoHabitacion.transferFocus();
     }//GEN-LAST:event_cbxTipoHabitacionActionPerformed
+
+    private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
+        btnGuardar.setText("Editar");
+        habilitar();
+        btnEliminar.setEnabled(true);
+        accion = "Editar";
+
+        //obtenemos la fila selecionada
+        int fila = tblDatos.rowAtPoint(evt.getPoint());
+        txtId.setText(tblDatos.getValueAt(fila, 0).toString());
+        txtNumeroHabi.setText(tblDatos.getValueAt(fila, 1).toString());
+        cbxPiso.setSelectedItem(tblDatos.getValueAt(fila, 2).toString());
+        txtDescripcion.setText(tblDatos.getValueAt(fila, 3).toString());
+        txtCaracteristicas.setText(tblDatos.getValueAt(fila, 4).toString());
+        txtPrecioUnitario.setText(tblDatos.getValueAt(fila, 5).toString());
+        cbxEstado.setSelectedItem(tblDatos.getValueAt(fila, 6).toString());
+        cbxTipoHabitacion.setSelectedItem(tblDatos.getValueAt(fila, 7).toString());
+    }//GEN-LAST:event_tblDatosMouseClicked
 
     /**
      * @param args the command line arguments
