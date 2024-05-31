@@ -395,6 +395,11 @@ public class frmHabitacion extends javax.swing.JFrame {
         btnEliminar.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir (2).png"))); // NOI18N
@@ -507,6 +512,26 @@ public class frmHabitacion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    public void elimarHabitacion() {
+        if (!txtId.getText().trim().isEmpty()) {
+            int confirmar;
+            confirmar = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de eliminar dicha habitacion?", "CONFIRMA", JOptionPane.WARNING_MESSAGE);
+
+            //si la confirmacion es si eliminamos
+            if (confirmar == 0) {
+
+                FHabitacion fHabitacion = new FHabitacion();
+                Habitacion habitacion = new Habitacion();
+
+                habitacion.setIdHabitacion(Integer.parseInt(txtId.getText()));
+                fHabitacion.eliminarHabitacion(habitacion);
+                mostrarDatos("");
+                inHabilitar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingrese el Id de la habitación a Eliminar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+        }
+    }
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         nuevaHabitacion();
     }//GEN-LAST:event_btnNuevoActionPerformed
@@ -514,6 +539,10 @@ public class frmHabitacion extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         guardarRegistro();
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        elimarHabitacion();
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
