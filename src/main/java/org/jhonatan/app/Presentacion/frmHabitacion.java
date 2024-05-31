@@ -11,7 +11,7 @@ import org.jhonatan.app.Logica.FHabitacion;
  * @author JHONATAN
  */
 public class frmHabitacion extends javax.swing.JFrame {
-
+    
     public frmHabitacion() {
         initComponents();
         this.setTitle("Registro de habitaciones");
@@ -25,7 +25,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
     }
-
+    
     void inHabilitar() {
         txtId.setVisible(false);
         cbxPiso.setEnabled(false);
@@ -33,7 +33,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtDescripcion.setEnabled(false);
         txtCaracteristicas.setEnabled(false);
         txtPrecioUnitario.setEnabled(false);
-
+        
         cbxEstado.setEnabled(false);
         cbxTipoHabitacion.setEnabled(false);
 
@@ -48,10 +48,10 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtCaracteristicas.setText("");
         txtDescripcion.setText("");
     }
-
+    
     void habilitar() {
         txtId.setVisible(false);
-
+        
         cbxPiso.setEnabled(true);
         txtNumeroHabi.setEnabled(true);
         txtDescripcion.setEnabled(true);
@@ -71,7 +71,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtCaracteristicas.setText("");
         txtDescripcion.setText("");
     }
-
+    
     void mostrarDatos(String buscar) {
         try {
             DefaultTableModel modelo;
@@ -79,58 +79,58 @@ public class frmHabitacion extends javax.swing.JFrame {
 
             //llamamos al funcion mostrar de la clase fhHABITACION
             modelo = func.mostrarDatosHabitacion(buscar);
-
+            
             tblDatos.setModel(modelo);
             ocultarColumnas();
-
+            
             lblTotalRegistros.setText("Total de registros: " + func.totalRegistros);
         } catch (Exception e) {
             System.out.println("Error al mostrar: " + e.toString());
         }
     }
-
+    
     void nuevaHabitacion() {
         habilitar();
         btnGuardar.setText("Guardar");
         accion = "guardar";
     }
-
+    
     private String validarCampos() {
         if (txtNumeroHabi.getText().trim().isEmpty() || (Integer.parseInt(txtNumeroHabi.getText()) < 0)) {
             txtNumeroHabi.requestFocus();
             return "Número";
         }
-
+        
         if (txtDescripcion.getText().length() == 0) {
             txtDescripcion.requestFocus();
             return "Descripción";
         }
-
+        
         if (txtCaracteristicas.getText().length() == 0) {
             txtCaracteristicas.requestFocus();
             return "Caracteristicas";
         }
-
+        
         if (txtPrecioUnitario.getText().length() == 0 || (Double.parseDouble(txtPrecioUnitario.getText()) < 0)) {
             txtPrecioUnitario.requestFocus();
             return "Precio Unitario";
         }
-
+        
         if (cbxPiso.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
             return "Piso de la habitación";
         }
-
+        
         if (cbxEstado.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
             return "Estado de la habitación";
         }
-
+        
         if (cbxTipoHabitacion.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
             return "Tipo de habitación";
         }
         //si aquellos campos estan vacios returnamos un texto vacio
         return "";
     }
-
+    
     void guardarRegistro() {
         String campo;
         campo = validarCampos();
@@ -138,20 +138,20 @@ public class frmHabitacion extends javax.swing.JFrame {
         FHabitacion fHabitacion = new FHabitacion();
         if (campo.equals("")) {
             habitacion.setNumero(txtNumeroHabi.getText());
-
+            
             int seleccion = cbxPiso.getSelectedIndex();
             habitacion.setPiso(cbxPiso.getItemAt(seleccion));
-
+            
             habitacion.setDescripcion(txtDescripcion.getText());
             habitacion.setCaracteristicas(txtCaracteristicas.getText());
             habitacion.setPrecioDiario(Double.parseDouble(txtPrecioUnitario.getText()));
-
+            
             seleccion = cbxEstado.getSelectedIndex();
             habitacion.setEstado(cbxEstado.getItemAt(seleccion));
-
+            
             seleccion = cbxTipoHabitacion.getSelectedIndex();
             habitacion.setTipoHabitacion(cbxTipoHabitacion.getItemAt(seleccion));
-
+            
             if (accion.equalsIgnoreCase("Guardar")) {
                 //llamamos al metodo de la clase fHabitacion
                 if (fHabitacion.insertarHabitacion(habitacion)) {
@@ -169,7 +169,7 @@ public class frmHabitacion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Verifique los  datos en el campo: " + campo, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -545,16 +545,16 @@ public class frmHabitacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-
+        
         int salir;
-
+        
         salir = JOptionPane.showConfirmDialog(rootPane, "¿Desea Salir?");
-
+        
         if (salir == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_btnSalirActionPerformed
-
+    
     public void elimarHabitacion() {
         if (!txtId.getText().trim().isEmpty()) {
             int confirmar;
@@ -562,10 +562,10 @@ public class frmHabitacion extends javax.swing.JFrame {
 
             //si la confirmacion es si eliminamos
             if (confirmar == 0) {
-
+                
                 FHabitacion fHabitacion = new FHabitacion();
                 Habitacion habitacion = new Habitacion();
-
+                
                 habitacion.setIdHabitacion(Integer.parseInt(txtId.getText()));
                 fHabitacion.eliminarHabitacion(habitacion);
                 mostrarDatos("");
@@ -588,7 +588,11 @@ public class frmHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        mostrarDatos(txtBuscar.getText());
+        if (txtBuscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa la habitacion a buscar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+        } else {
+            mostrarDatos(txtBuscar.getText());
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
