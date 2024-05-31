@@ -160,11 +160,14 @@ public class frmHabitacion extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "LA HABITACIÓN FUE REGISTRADA CON EXÍTO", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                     //llamos al procecimiento mostrar
                     mostrarDatos("");
+                    inHabilitar();
                 }
             } else if (accion.equalsIgnoreCase("EDITAR")) {
                 habitacion.setIdHabitacion(Integer.parseInt(txtId.getText()));
                 if (fHabitacion.modificarHabitacion(habitacion)) {
                     JOptionPane.showMessageDialog(rootPane, "LA HABITACIÓN FUE EDITADA EXITOSAMENTE", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    mostrarDatos("");
+                    inHabilitar();
                 }
             }
         } else {
