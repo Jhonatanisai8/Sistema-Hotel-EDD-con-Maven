@@ -115,6 +115,18 @@ public class frmHabitacion extends javax.swing.JFrame {
             txtPrecioUnitario.requestFocus();
             return "Precio Unitario";
         }
+
+        if (cbxPiso.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
+            return "Piso de la habitación";
+        }
+        
+        if (cbxEstado.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
+            return "Estado de la habitación";
+        }
+
+        if (cbxTipoHabitacion.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
+            return "Tipo de habitación";
+        }
         //si aquellos campos estan vacios returnamos un texto vacio
         return "";
     }
