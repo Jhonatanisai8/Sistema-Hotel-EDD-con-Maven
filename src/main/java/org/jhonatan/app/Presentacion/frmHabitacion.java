@@ -255,17 +255,33 @@ public class frmHabitacion extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         jLabel6.setText("Precio Diario");
 
+        txtPrecioUnitario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioUnitarioActionPerformed(evt);
+            }
+        });
+
         jLabel7.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         jLabel7.setText("Estado:");
 
         cbxEstado.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "=Seleccionar=", "Disponible", "Ocupado", "Mantenimiento" }));
+        cbxEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxEstadoActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         jLabel8.setText("Tipo de Habitacion:");
 
         cbxTipoHabitacion.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         cbxTipoHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "=Seleccionar=", "Individual", "Familiar", "Matrimonial", "Presidencial" }));
+        cbxTipoHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTipoHabitacionActionPerformed(evt);
+            }
+        });
 
         btnNuevo.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nuevo (2).png"))); // NOI18N
@@ -582,6 +598,18 @@ public class frmHabitacion extends javax.swing.JFrame {
     private void cbxPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPisoActionPerformed
         cbxPiso.transferFocus();
     }//GEN-LAST:event_cbxPisoActionPerformed
+
+    private void txtPrecioUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioUnitarioActionPerformed
+        txtPrecioUnitario.transferFocus();
+    }//GEN-LAST:event_txtPrecioUnitarioActionPerformed
+
+    private void cbxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEstadoActionPerformed
+        cbxEstado.transferFocus();
+    }//GEN-LAST:event_cbxEstadoActionPerformed
+
+    private void cbxTipoHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoHabitacionActionPerformed
+        cbxTipoHabitacion.transferFocus();
+    }//GEN-LAST:event_cbxTipoHabitacionActionPerformed
 
     /**
      * @param args the command line arguments
