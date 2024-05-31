@@ -82,7 +82,7 @@ public class FHabitacion {
 
     public boolean modificarHabitacion(Habitacion habitacion) {
         sql = "UPDATE habitacion SET numero = ?,piso = ?,descripcion = ?,"
-                + "caracteristicas = ?,precio_diario = ?,estado = ?, tipo_habitacion WHERE idhabitacion = ?";
+                + "caracteristicas = ?,precio_diario = ?,estado = ?, tipo_habitacion = ?  WHERE idhabitacion = ?";
         try {
             Connection conex = conexion.conectarBD();
             PreparedStatement pst = conex.prepareStatement(sql);
@@ -106,7 +106,7 @@ public class FHabitacion {
     }
 
     public boolean eliminarHabitacion(Habitacion habitacion) {
-        sql = "DELETE * from habitacion WHERE idhabitacion = ?";
+        sql = "DELETE from habitacion WHERE idhabitacion = ?";
         try {
             Connection conex = conexion.conectarBD();
             PreparedStatement pst = conex.prepareStatement(sql);

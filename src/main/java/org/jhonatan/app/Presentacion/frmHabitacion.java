@@ -1,6 +1,6 @@
 package org.jhonatan.app.Presentacion;
 
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialPalenightIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.jhonatan.app.Datos.Habitacion;
@@ -15,7 +15,8 @@ public class frmHabitacion extends javax.swing.JFrame {
     public frmHabitacion() {
         initComponents();
         this.setTitle("Registro de habitaciones");
-        FlatMaterialPalenightIJTheme.setup();
+//        FlatMaterialLighterIJTheme.setup();
+        FlatMaterialLighterIJTheme.setup();
         mostrarDatos("");
         inHabilitar();
     }
