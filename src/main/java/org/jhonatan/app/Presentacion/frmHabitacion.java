@@ -215,11 +215,28 @@ public class frmHabitacion extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         jLabel2.setText("Nº de Habitacion:");
 
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
+        txtNumeroHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroHabiActionPerformed(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         jLabel3.setText("Piso:");
 
         cbxPiso.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         cbxPiso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "=Seleccionar=", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        cbxPiso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxPisoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         jLabel4.setText("Descripcion:");
@@ -552,6 +569,19 @@ public class frmHabitacion extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         mostrarDatos(txtBuscar.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void txtNumeroHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroHabiActionPerformed
+        /*este metodo nos sirve para que cada ves que presiones la tecla enter nos lleve a otro formulario*/
+        txtNumeroHabi.transferFocus();
+    }//GEN-LAST:event_txtNumeroHabiActionPerformed
+
+    private void cbxPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPisoActionPerformed
+        cbxPiso.transferFocus();
+    }//GEN-LAST:event_cbxPisoActionPerformed
 
     /**
      * @param args the command line arguments
