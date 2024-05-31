@@ -97,7 +97,7 @@ public class FHabitacion {
             pst.setString(7, habitacion.getTipoHabitacion());
             pst.setInt(8, habitacion.getIdHabitacion());
 
-          //  conexion.desconectarBD();
+            //  conexion.desconectarBD();
             return pst.executeUpdate() != 0;
         } catch (SQLException e) {
             System.out.println("Error al modificar habitacion: " + e.toString());
