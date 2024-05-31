@@ -119,7 +119,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         if (cbxPiso.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
             return "Piso de la habitación";
         }
-        
+
         if (cbxEstado.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
             return "Estado de la habitación";
         }
@@ -153,19 +153,20 @@ public class frmHabitacion extends javax.swing.JFrame {
             habitacion.setTipoHabitacion(cbxTipoHabitacion.getItemAt(seleccion));
 
             if (accion.equalsIgnoreCase("Guardar")) {
+                //llamamos al metodo de la clase fHabitacion
                 if (fHabitacion.insertarHabitacion(habitacion)) {
-                    JOptionPane.showMessageDialog(rootPane, "LA HABITACIÓN FUE REGISTRADA CON EXÍTO", "ATENCIÓN", 2);
+                    JOptionPane.showMessageDialog(rootPane, "LA HABITACIÓN FUE REGISTRADA CON EXÍTO", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                     //llamos al procecimiento mostrar
                     mostrarDatos("");
                 }
             } else if (accion.equalsIgnoreCase("EDITAR")) {
                 habitacion.setIdHabitacion(Integer.parseInt(txtId.getText()));
                 if (fHabitacion.modificarHabitacion(habitacion)) {
-                    JOptionPane.showMessageDialog(rootPane, "LA HABITACIÓN FUE EDITADA EXITOSAMENTE", "ATENCIÓN", 2);
+                    JOptionPane.showMessageDialog(rootPane, "LA HABITACIÓN FUE EDITADA EXITOSAMENTE", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Verifique los  datos en el campo: " + campo, "ATENCIÓN", HEIGHT);
+            JOptionPane.showMessageDialog(rootPane, "Verifique los  datos en el campo: " + campo, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         }
     }
 
