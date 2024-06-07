@@ -10,9 +10,14 @@ import org.jhonatan.app.Datos.Producto;
  */
 public class ProductoImplementacion implements ProductoDao {
 
+    //instacion de la conexion;
+    Conexion conexion = Conexion.getInstancia();
+    private String sql = "";
+    private int totalRegistros;
+
     @Override
     public DefaultTableModel mostrarProductos(String buscar) {
-        
+
     }
 
     @Override
