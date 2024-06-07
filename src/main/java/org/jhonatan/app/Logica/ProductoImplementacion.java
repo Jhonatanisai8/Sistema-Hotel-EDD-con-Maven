@@ -46,7 +46,7 @@ public class ProductoImplementacion implements ProductoDao {
             conexion.desconectarBD();
             return modelo;
         } catch (SQLException e) {
-            System.out.println("Error al mostrar datos de la tabla habitacion; " + e.toString());
+            System.out.println("Error al mostrar datos de la tabla producto; " + e.toString());
             return null;
         } finally {
             try {
@@ -76,7 +76,7 @@ public class ProductoImplementacion implements ProductoDao {
             pst.executeUpdate();
             conexion.desconectarBD();
         } catch (SQLException e) {
-            System.out.println("Error al insertar habitacion: "
+            System.out.println("Error al insertar producto: "
                     + e.toString());
         }
     }
@@ -99,12 +99,25 @@ public class ProductoImplementacion implements ProductoDao {
             pst.executeUpdate();
             conexion.desconectarBD();
         } catch (SQLException e) {
-            System.out.println("Error al modificar habitacion: " + e.toString());
+            System.out.println("Error al modificar producto: " + e.toString());
         }
     }
 
     @Override
     public void eliminarProducto(Producto producto) {
+        sql = "DELETE from producto WHERE idproducto = ?";
+        try {
+            Connection conex = conexion.conectarBD();
+            PreparedStatement pst = conex.prepareStatement(sql);
+
+            //eliminamos
+            pst.setInt(1, producto.getIdProducto());
+            pst.executeUpdate();
+            conexion.desconectarBD();
+
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar el producto: " + e.toString());
+        }
     }
 
 }
