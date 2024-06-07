@@ -72,7 +72,7 @@ public class ProductoImplementacion implements ProductoDao {
             pst.setString(2, producto.getDescripcion());
             pst.setString(3, producto.getUnidadMedida());
             pst.setDouble(4, producto.getPrecioVenta());
-
+            //ejecutamos
             pst.executeUpdate();
             conexion.desconectarBD();
         } catch (SQLException e) {
@@ -83,6 +83,24 @@ public class ProductoImplementacion implements ProductoDao {
 
     @Override
     public void modificarProducto(Producto producto) {
+        sql = "UPDATE habitacion SET nombre = ?,descripcion = ?,"
+                + "unidad_medida = ?,precio_venta = ?  WHERE idhabitacion = ?";
+        try {
+            Connection conex = conexion.conectarBD();
+            PreparedStatement pst = conex.prepareStatement(sql);
+
+            //modificamos
+            pst.setString(1, producto.getNombre());
+            pst.setString(2, producto.getDescripcion());
+            pst.setString(3, producto.getUnidadMedida());
+            pst.setDouble(4, producto.getPrecioVenta());
+
+            //  conexion.desconectarBD();
+            pst.executeUpdate();
+            conexion.desconectarBD();
+        } catch (SQLException e) {
+            System.out.println("Error al modificar habitacion: " + e.toString());
+        }
     }
 
     @Override
