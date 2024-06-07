@@ -48,11 +48,37 @@ public class ProductoImplementacion implements ProductoDao {
         } catch (SQLException e) {
             System.out.println("Error al mostrar datos de la tabla habitacion; " + e.toString());
             return null;
+        } finally {
+            try {
+                conexion.desconectarBD();
+            } catch (SQLException ex) {
+                System.out.println("Error la cerrar la conexion en el metodo mostra productos");
+            }
         }
     }
 
     @Override
     public void insertarProducto(Producto producto) {
+        sql = "INSERT INTO producto"
+                + " (nombre,descripcion,unidad_medida,precio_venta)"
+                + "  VALUES (?,?,?,?)";
+        try {
+            Connection conex = conexion.conectarBD();
+
+            PreparedStatement pst = conex.prepareStatement(sql);
+
+            //insertamos
+            pst.setString(1, producto.getNombre());
+            pst.setString(2, producto.getDescripcion());
+            pst.setString(3, producto.getUnidadMedida());
+            pst.setDouble(4, producto.getPrecioVenta());
+
+            pst.executeUpdate();
+            conexion.desconectarBD();
+        } catch (SQLException e) {
+            System.out.println("Error al insertar habitacion: "
+                    + e.toString());
+        }
     }
 
     @Override
