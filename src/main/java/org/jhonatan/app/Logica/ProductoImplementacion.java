@@ -83,8 +83,8 @@ public class ProductoImplementacion implements ProductoDao {
 
     @Override
     public void modificarProducto(Producto producto) {
-        sql = "UPDATE habitacion SET nombre = ?,descripcion = ?,"
-                + "unidad_medida = ?,precio_venta = ?  WHERE idhabitacion = ?";
+        sql = "UPDATE producto SET nombre = ?,descripcion = ?,"
+                + "unidad_medida = ?,precio_venta = ?  WHERE idProducto = ?";
         try {
             Connection conex = conexion.conectarBD();
             PreparedStatement pst = conex.prepareStatement(sql);
