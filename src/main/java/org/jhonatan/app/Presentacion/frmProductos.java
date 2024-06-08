@@ -1,6 +1,9 @@
 package org.jhonatan.app.Presentacion;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import javax.swing.table.DefaultTableModel;
+import org.jhonatan.app.Logica.FHabitacion;
+import org.jhonatan.app.Logica.ProductoImplementacion;
 
 /**
  *
@@ -57,6 +60,24 @@ public class frmProductos extends javax.swing.JFrame {
         txtId.setText("");
         txtPrecioUnitario.setText("");
         txtDescripcion.setText("");
+    }
+
+    private void mostrarDatos(String buscar) {
+        try {
+            DefaultTableModel modelo;
+            //creamos una instancia de la clase      ProductoImplementacion       //FHabitacion func = new FHabitacion();
+            ProductoImplementacion productoImplementacion = new ProductoImplementacion();
+
+            //llamamos al funcion mostrar de la clase ProductoImplementacion
+            modelo = productoImplementacion.mostrarProductos(buscar);
+
+            tblDatos.setModel(modelo);
+            ocultarColumnas();
+
+            lblTotalRegistros.setText("Total de registros: " + productoImplementacion.totalRegistros);
+        } catch (Exception e) {
+            System.out.println("Error al mostrar Productos: " + e.toString());
+        }
     }
 
     @SuppressWarnings("unchecked")
