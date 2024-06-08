@@ -1,6 +1,7 @@
 package org.jhonatan.app;
 
 import org.jhonatan.app.Presentacion.frmHabitacion;
+import org.jhonatan.app.Presentacion.frmProductos;
 
 /**
  *
@@ -9,8 +10,16 @@ import org.jhonatan.app.Presentacion.frmHabitacion;
 public class Principal {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        frmHabitacion ventanaRegistro = new frmHabitacion();
+        formularioHabitaciones();
+    }
+
+    public static void formularioProductos() {
+        frmProductos ventanaRegistro = new frmProductos();
         ventanaRegistro.setVisible(true);
+    }
+
+    public static void formularioHabitaciones() {
+        frmHabitacion habitacion = new frmHabitacion();
+        habitacion.setVisible(true);
     }
 }
