@@ -46,6 +46,8 @@ public class frmProductos extends javax.swing.JFrame {
         txtId.setText("");
         txtPrecioUnitario.setText("");
         txtDescripcion.setText("");
+        txtNombre.setText("");
+        cbxUnidadMedida.setSelectedIndex(0);
     }
 
     private void habilitar() {
@@ -65,6 +67,9 @@ public class frmProductos extends javax.swing.JFrame {
         txtId.setText("");
         txtPrecioUnitario.setText("");
         txtDescripcion.setText("");
+        txtDescripcion.setText("");
+        txtNombre.setText("");
+        cbxUnidadMedida.setSelectedIndex(0);
     }
 
     private void mostrarDatos(String buscar) {
