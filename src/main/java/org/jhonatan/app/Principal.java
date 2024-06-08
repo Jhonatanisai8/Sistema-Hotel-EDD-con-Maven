@@ -10,7 +10,8 @@ import org.jhonatan.app.Presentacion.frmProductos;
 public class Principal {
 
     public static void main(String[] args) {
-        formularioHabitaciones();
+        //formularioHabitaciones();
+        formularioProductos();
     }
 
     public static void formularioProductos() {
