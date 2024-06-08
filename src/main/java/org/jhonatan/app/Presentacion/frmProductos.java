@@ -38,7 +38,25 @@ public class frmProductos extends javax.swing.JFrame {
         txtId.setText("");
         txtPrecioUnitario.setText("");
         txtDescripcion.setText("");
+    }
 
+    private void habilitar() {
+        txtId.setVisible(false);
+
+        cbxUnidadMedida.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtDescripcion.setEnabled(true);
+        txtPrecioUnitario.setEnabled(true);
+
+        //botones
+        btnGuardar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnEliminar.setEnabled(true);
+
+        //cajas de texto 
+        txtId.setText("");
+        txtPrecioUnitario.setText("");
+        txtDescripcion.setText("");
     }
 
     @SuppressWarnings("unchecked")
