@@ -125,7 +125,7 @@ public class frmProductos extends javax.swing.JFrame {
         ProductoImplementacion productoImple = new ProductoImplementacion();
         if (campo.equals("")) {
             //establecemos sus ATRIBUTOS
-            producto.setNombre(txtId.getText());
+            producto.setNombre(txtNombre.getText());
             int seleccion = cbxUnidadMedida.getSelectedIndex();
             producto.setUnidadMedida(cbxUnidadMedida.getItemAt(seleccion));
 
