@@ -17,6 +17,8 @@ public class frmProductos extends javax.swing.JFrame {
     public frmProductos() {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
+        mostrarDatos("");
+        inHabilitar();
     }
 
     private String accion = "guardar";
@@ -150,7 +152,7 @@ public class frmProductos extends javax.swing.JFrame {
         }
     }
 
-    public void elimarProducto() {
+    private void elimarProducto() {
         if (!txtId.getText().trim().isEmpty()) {
             int confirmar;
             confirmar = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de eliminar dicho Producto?", "CONFIRMA", JOptionPane.WARNING_MESSAGE);
@@ -493,16 +495,16 @@ public class frmProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxUnidadMedidaActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-//        nuevaHabitacion();
+        nuevoProducto();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        //      guardarRegistro();
+        guardarRegistro();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
-        /*
-              btnGuardar.setText("Editar");
+
+        btnGuardar.setText("Editar");
         habilitar();
         btnEliminar.setEnabled(true);
         accion = "Editar";
@@ -510,18 +512,15 @@ public class frmProductos extends javax.swing.JFrame {
         //obtenemos la fila selecionada
         int fila = tblDatos.rowAtPoint(evt.getPoint());
         txtId.setText(tblDatos.getValueAt(fila, 0).toString());
-        txtNumeroHabi.setText(tblDatos.getValueAt(fila, 1).toString());
-        cbxPiso.setSelectedItem(tblDatos.getValueAt(fila, 2).toString());
-        txtDescripcion.setText(tblDatos.getValueAt(fila, 3).toString());
-        txtCaracteristicas.setText(tblDatos.getValueAt(fila, 4).toString());
-        txtPrecioUnitario.setText(tblDatos.getValueAt(fila, 5).toString());
-        cbxEstado.setSelectedItem(tblDatos.getValueAt(fila, 6).toString());
-        cbxTipoHabitacion.setSelectedItem(tblDatos.getValueAt(fila, 7).toString());
-         */
+        txtNombre.setText(tblDatos.getValueAt(fila, 1).toString());
+        cbxUnidadMedida.setSelectedItem(tblDatos.getValueAt(fila, 3).toString());
+        txtDescripcion.setText(tblDatos.getValueAt(fila, 2).toString());
+        txtPrecioUnitario.setText(tblDatos.getValueAt(fila, 4).toString());
+
     }//GEN-LAST:event_tblDatosMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        //  elimarHabitacion();
+        elimarProducto();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -534,11 +533,11 @@ public class frmProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        /*   if (txtBuscar.getText().trim().isEmpty()) {
+        if (txtBuscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingresa la habitacion a buscar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         } else {
             mostrarDatos(txtBuscar.getText());
-        }*/
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**

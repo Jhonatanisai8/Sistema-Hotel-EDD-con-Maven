@@ -310,6 +310,11 @@ public class frmHabitacion extends javax.swing.JFrame {
         btnCancelar.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -643,6 +648,10 @@ public class frmHabitacion extends javax.swing.JFrame {
         cbxEstado.setSelectedItem(tblDatos.getValueAt(fila, 6).toString());
         cbxTipoHabitacion.setSelectedItem(tblDatos.getValueAt(fila, 7).toString());
     }//GEN-LAST:event_tblDatosMouseClicked
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
