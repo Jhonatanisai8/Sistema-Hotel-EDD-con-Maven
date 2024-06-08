@@ -150,6 +150,26 @@ public class frmProductos extends javax.swing.JFrame {
         }
     }
 
+    public void elimarProducto() {
+        if (!txtId.getText().trim().isEmpty()) {
+            int confirmar;
+            confirmar = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de eliminar dicho Producto?", "CONFIRMA", JOptionPane.WARNING_MESSAGE);
+            //si la confirmacion es si eliminamos
+            if (confirmar == 0) {
+                //objetos de la clase producto y la clase donde implementan los métodos
+                Producto producto = new Producto();
+                ProductoImplementacion productoImple = new ProductoImplementacion();
+
+                producto.setIdProducto(Integer.parseInt(txtId.getText()));
+                productoImple.eliminarProducto(producto);
+                mostrarDatos("");
+                inHabilitar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingrese el Id del Producto a Eliminar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
