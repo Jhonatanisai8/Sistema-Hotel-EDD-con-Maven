@@ -16,10 +16,29 @@ public class frmProductos extends javax.swing.JFrame {
     private String accion = "guardar";
 
     //la columa a ocultar es la que contiene el Id habitacion
-    void ocultarColumnas() {
+    private void ocultarColumnas() {
         tblDatos.getColumnModel().getColumn(0).setMaxWidth(0);
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
+
+    private void inHabilitar() {
+        txtId.setVisible(false);
+        cbxUnidadMedida.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtDescripcion.setEnabled(false);
+        txtPrecioUnitario.setEnabled(false);
+
+        //botones
+        btnGuardar.setEnabled(false);
+        btnCancelar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+
+        //cajas de texto 
+        txtId.setText("");
+        txtPrecioUnitario.setText("");
+        txtDescripcion.setText("");
+
     }
 
     @SuppressWarnings("unchecked")
