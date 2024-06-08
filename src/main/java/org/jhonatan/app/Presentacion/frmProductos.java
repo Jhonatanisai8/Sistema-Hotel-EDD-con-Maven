@@ -1,7 +1,10 @@
 package org.jhonatan.app.Presentacion;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jhonatan.app.Datos.Habitacion;
+import org.jhonatan.app.Datos.Producto;
 import org.jhonatan.app.Logica.FHabitacion;
 import org.jhonatan.app.Logica.ProductoImplementacion;
 
@@ -109,6 +112,42 @@ public class frmProductos extends javax.swing.JFrame {
 
         //si aquellos campos estan vacios returnamos un texto vacio
         return "";
+    }
+
+    private void guardarRegistro() {
+        String campo;
+        campo = validarCampos();
+        //Habitacion habitacion = new Habitacion();
+        //objetos de la clase producto y la clase donde implementan los métodos
+        Producto producto = new Producto();
+        ProductoImplementacion productoImple = new ProductoImplementacion();
+        if (campo.equals("")) {
+            //establecemos sus ATRIBUTOS
+            producto.setNombre(txtId.getText());
+            int seleccion = cbxUnidadMedida.getSelectedIndex();
+            producto.setUnidadMedida(cbxUnidadMedida.getItemAt(seleccion));
+
+            producto.setDescripcion(txtDescripcion.getText());
+            producto.setPrecioVenta(Double.parseDouble(txtPrecioUnitario.getText()));
+
+            if (accion.equalsIgnoreCase("Guardar")) {
+                //llamamos al metodo de la clase ProductoImplementacion
+                productoImple.insertarProducto(producto);
+                JOptionPane.showMessageDialog(rootPane, "PRODUCTO FUE REGISTRADO CON EXÍTO", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                //llamos al procecimiento mostrar
+                mostrarDatos("");
+                inHabilitar();
+
+            } else if (accion.equalsIgnoreCase("EDITAR")) {
+                producto.setIdProducto(Integer.parseInt(txtId.getText()));
+                productoImple.modificarProducto(producto);
+                JOptionPane.showMessageDialog(rootPane, "EL PRODUCTO FUE EDITADO EXITOSAMENTE", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                mostrarDatos("");
+                inHabilitar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Verifique los  datos en el campo: " + campo, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -466,14 +505,12 @@ public class frmProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-
-        /*        int salir;
-
+        int salir;
         salir = JOptionPane.showConfirmDialog(rootPane, "¿Desea Salir?");
 
         if (salir == 0) {
             System.exit(0);
-        }*/
+        }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
