@@ -86,6 +86,31 @@ public class frmProductos extends javax.swing.JFrame {
         accion = "guardar";
     }
 
+    private String validarCampos() {
+        if (txtNombre.getText().trim().isEmpty()) {
+            txtNombre.requestFocus();
+            return "Nombre";
+        }
+
+        if (txtDescripcion.getText().length() == 0) {
+            txtDescripcion.requestFocus();
+            return "Descripción";
+        }
+
+        if (txtPrecioUnitario.getText().length() == 0 || (Double.parseDouble(txtPrecioUnitario.getText()) < 0)) {
+            txtPrecioUnitario.requestFocus();
+            return "Precio Venta";
+        }
+
+        if (cbxUnidadMedida.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
+            cbxUnidadMedida.requestFocus();
+            return "Unidad de Medida";
+        }
+
+        //si aquellos campos estan vacios returnamos un texto vacio
+        return "";
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
