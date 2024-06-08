@@ -94,6 +94,7 @@ public class ProductoImplementacion implements ProductoDao {
             pst.setString(2, producto.getDescripcion());
             pst.setString(3, producto.getUnidadMedida());
             pst.setDouble(4, producto.getPrecioVenta());
+            pst.setInt(5, producto.getIdProducto());
 
             //  conexion.desconectarBD();
             pst.executeUpdate();
