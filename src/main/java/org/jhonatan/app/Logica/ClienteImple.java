@@ -1,6 +1,7 @@
 package org.jhonatan.app.Logica;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -80,7 +81,38 @@ public class ClienteImple implements ClienteDao {
 
     @Override
     public void insertarCliente(Cliente cliente) {
+        sql = "INSERT INTO persona"
+                + " (nombre,apaterno,amaterno,tipo_documento,num_documento,direccion,telefono,email)"
+                + "  VALUES (?,?,?,?,?,?,?,?)";
+        sql2 = "INSERT INTO cliente (idpersona,codigo_cliente)"
+                + "VALUES ((SELECT idpersona FROM persona ORDER BY idpersona DESC LIMIT 1),?)";
+        try {
+            Connection conex = conexion.conectarBD();
 
+            PreparedStatement pst = conex.prepareStatement(sql);
+            PreparedStatement pst2 = conex.prepareStatement(sql2);
+
+            //insertamos
+            pst.setString(1, cliente.getNombre());
+            pst.setString(2, cliente.getAppPaterno());
+            pst.setString(3, cliente.getAppMaterno());
+            pst.setString(4, cliente.getTipoDocumento());
+            pst.setString(5, cliente.getNumeroDocumento());
+            pst.setString(6, cliente.getDireccion());
+            pst.setString(7, cliente.getTelefono());
+            pst.setString(8, cliente.getEmail());
+
+            //para la segunda consulta
+            pst2.setString(1, cliente.getCodigoCliente());
+            //ejecutamos
+            pst.executeUpdate();
+            pst.executeUpdate();
+
+            conexion.desconectarBD();
+        } catch (SQLException e) {
+            System.out.println("Error al insertar cliente: "
+                    + e.toString());
+        }
     }
 
     @Override
