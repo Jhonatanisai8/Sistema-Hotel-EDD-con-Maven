@@ -117,7 +117,46 @@ public class ClienteImple implements ClienteDao {
 
     @Override
     public void modificarCliente(Cliente cliente) {
+        sql = "UPDATE persona "
+                + "SET nombre = ?,"
+                + "apaterno = ?,"
+                + "amaterno = ?,"
+                + "tipo_documento = ?,"
+                + "num_documento = ?,"
+                + "direccion = ?, "
+                + "telefono = ?,"
+                + "email = ?"
+                + " WHERE idpersona = ?";
 
+        sql2 = "UPDATE cliente "
+                + "SET codigo_cliente = ? WHERE idcliente = ?";
+        try {
+            Connection conex = conexion.conectarBD();
+            PreparedStatement pst = conex.prepareStatement(sql);
+            PreparedStatement pst2 = conex.prepareStatement(sql2);
+
+            //insertamos
+            pst.setString(1, cliente.getNombre());
+            pst.setString(2, cliente.getAppPaterno());
+            pst.setString(3, cliente.getAppMaterno());
+            pst.setString(4, cliente.getTipoDocumento());
+            pst.setString(5, cliente.getNumeroDocumento());
+            pst.setString(6, cliente.getDireccion());
+            pst.setString(7, cliente.getTelefono());
+            pst.setString(8, cliente.getEmail());
+            pst.setInt(8, cliente.getIdPersona());
+
+            //para la segunda consulta
+            pst2.setString(1, cliente.getCodigoCliente());
+            pst2.setInt(2, cliente.getIdPersona());
+
+            //ejecutamos
+            pst.executeUpdate();
+            pst.executeUpdate();
+            conexion.desconectarBD();
+        } catch (SQLException e) {
+            System.out.println("Error al modificar cliente: " + e.toString());
+        }
     }
 
     @Override
