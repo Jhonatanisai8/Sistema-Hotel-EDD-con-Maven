@@ -161,7 +161,27 @@ public class ClienteImple implements ClienteDao {
 
     @Override
     public void eliminarCliente(Cliente cliente) {
+        //consulta
+        sql = "DELETE from cliente WHERE idpersona = ?";
+        sql2 = "DELETE from persona WHERE idpersona = ?";
 
+        try {
+            Connection conex = conexion.conectarBD();
+            PreparedStatement pst = conex.prepareStatement(sql);
+            PreparedStatement pst2 = conex.prepareStatement(sql2);
+
+            //eliminamos
+            pst.setInt(1, cliente.getIdPersona());
+            pst2.setInt(1, cliente.getIdPersona());
+
+            pst.executeUpdate();
+            pst2.executeUpdate();
+
+            conexion.desconectarBD();
+
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar el cliente: " + e.toString());
+        }
     }
 
 }
