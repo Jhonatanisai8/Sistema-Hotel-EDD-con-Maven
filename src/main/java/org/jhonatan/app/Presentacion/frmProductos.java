@@ -215,12 +215,14 @@ public class frmProductos extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         jLabel2.setText("Nombre:");
 
+        txtId.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 10)); // NOI18N
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
             }
         });
 
+        txtNombre.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 10)); // NOI18N
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -231,12 +233,14 @@ public class frmProductos extends javax.swing.JFrame {
         jLabel4.setText("Descripcion:");
 
         txtDescripcion.setColumns(20);
+        txtDescripcion.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 10)); // NOI18N
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
         jLabel6.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
-        jLabel6.setText("Precio Diario");
+        jLabel6.setText("Precio Venta:");
 
+        txtPrecioUnitario.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 10)); // NOI18N
         txtPrecioUnitario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioUnitarioActionPerformed(evt);
@@ -367,7 +371,7 @@ public class frmProductos extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblDatos);
 
-        txtBuscar.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 10)); // NOI18N
 
         btnEliminar.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminar.png"))); // NOI18N
