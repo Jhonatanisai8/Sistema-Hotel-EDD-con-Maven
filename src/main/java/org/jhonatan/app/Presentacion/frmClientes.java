@@ -3,21 +3,22 @@ package org.jhonatan.app.Presentacion;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.jhonatan.app.Logica.ProductoImplementacion;
+import org.jhonatan.app.Datos.Cliente;
+import org.jhonatan.app.Logica.ClienteImple;
 
 /**
  *
  * @author Jhonatan
  */
 public class frmClientes extends javax.swing.JFrame {
-
+    
     public frmClientes() {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
-        inHabilitar();
         mostrarDatos("");
+        inHabilitar();
     }
-
+    
     private String accion = "guardar";
 
     //la columa a ocultar es la que contiene el Id habitacion
@@ -26,7 +27,7 @@ public class frmClientes extends javax.swing.JFrame {
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
     }
-
+    
     private void inHabilitar() {
         txtId.setVisible(false);
         cbxTipoDocumento.setEnabled(false);
@@ -54,9 +55,9 @@ public class frmClientes extends javax.swing.JFrame {
         txtEmail.setText("");
         txtNumeroDocumento.setText("");
         txtNombre.requestFocus();
-
+        
     }
-
+    
     private void habilitar() {
         txtId.setVisible(false);
         cbxTipoDocumento.setEnabled(true);
@@ -85,57 +86,57 @@ public class frmClientes extends javax.swing.JFrame {
         txtNumeroDocumento.setText("");
         txtNombre.requestFocus();
     }
-
+    
     private void mostrarDatos(String buscar) {
         try {
             DefaultTableModel modelo;
-            //creamos una instancia de la clase      ProductoImplementacion       //FHabitacion func = new FHabitacion();
-            ProductoImplementacion productoImplementacion = new ProductoImplementacion();
+            //creamos una instancia de la clase clienteImplementacion       
 
+            ClienteImple clienteImple = new ClienteImple();
             //llamamos al funcion mostrar de la clase ProductoImplementacion
-            modelo = productoImplementacion.mostrarProductos(buscar);
-
-            tblDatos.setModel(modelo);
+            modelo = clienteImple.mostrarClientes(buscar);
+            
+            tblDatos1.setModel(modelo);
             ocultarColumnas();
-
-            lblTotalRegistros.setText("Total de registros: " + productoImplementacion.totalRegistros);
+            
+            lblTotalRegistros.setText("Total de registros: " + clienteImple.totalRegistros);
         } catch (Exception e) {
             System.out.println("Error al mostrar CLIENTES: " + e.toString());
         }
     }
-
+    
     public void nuevoCliente() {
         habilitar();
         btnGuardar.setText("Guardar");
         accion = "guardar";
     }
-
+    
     private String validarCampos() {
         if (txtNombre.getText().trim().isEmpty()) {
             txtNombre.requestFocus();
             return "Nombre";
         }
-
+        
         if (txtApPaterno.getText().length() == 0) {
             txtApPaterno.requestFocus();
             return "Apellido Paterno";
         }
-
+        
         if (txtAppMaterno.getText().length() == 0) {
             txtAppMaterno.requestFocus();
             return "Apellido Materno";
         }
-
+        
         if (txtDireccion.getText().length() == 0) {
             txtDireccion.requestFocus();
             return "Dirección";
         }
-
+        
         if (txtTelefono.getText().length() == 0) {
             txtTelefono.requestFocus();
             return "Telefono";
         }
-
+        
         if (txtEmail.getText().length() == 0) {
             txtEmail.requestFocus();
             return "Email";
@@ -144,7 +145,7 @@ public class frmClientes extends javax.swing.JFrame {
             txtNumeroDocumento.requestFocus();
             return "Nº de Documento";
         }
-
+        
         if (cbxTipoDocumento.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
             cbxTipoDocumento.requestFocus();
             return "Tipo documento";
@@ -153,7 +154,48 @@ public class frmClientes extends javax.swing.JFrame {
         //si aquellos campos estan vacios returnamos un texto vacio
         return "";
     }
-
+    
+    private void guardarRegistro() {
+        String campo;
+        campo = validarCampos();
+        //Habitacion habitacion = new Habitacion();
+        //objetos de la clase cliente y la clase donde implementan los métodos
+        Cliente cliente = new Cliente();
+        ClienteImple clienteImple = new ClienteImple();
+        if (campo.equals("")) {
+            //establecemos sus ATRIBUTOS
+            cliente.setNombre(txtNombre.getText());
+            int seleccion = cbxTipoDocumento.getSelectedIndex();
+            cliente.setTipoDocumento(cbxTipoDocumento.getItemAt(seleccion));
+            
+            cliente.setAppPaterno(txtApPaterno.getText());
+            cliente.setAppMaterno(txtAppMaterno.getText());
+            cliente.setNumeroDocumento(txtNumeroDocumento.getText());
+            cliente.setDireccion(txtDireccion.getText());
+            cliente.setTelefono(txtTelefono.getText());
+            cliente.setEmail(txtEmail.getText());
+            cliente.setCodigoCliente(txtCodigo.getText());
+            
+            if (accion.equalsIgnoreCase("Guardar")) {
+                //llamamos al metodo de la clase ProductoImplementacion
+                clienteImple.insertarCliente(cliente);
+                JOptionPane.showMessageDialog(rootPane, "ClIENTE REGISTRADO CON EXÍTO", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                //llamos al procecimiento mostrar
+                mostrarDatos("");
+                inHabilitar();
+                
+            } else if (accion.equalsIgnoreCase("EDITAR")) {
+                cliente.setIdPersona(Integer.parseInt(txtId.getText()));
+                clienteImple.modificarCliente(cliente);
+                JOptionPane.showMessageDialog(rootPane, "EL CLIENTE FUE EDITADO EXITOSAMENTE", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                mostrarDatos("");
+                inHabilitar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Verifique los  datos en el campo: " + campo, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -686,11 +728,11 @@ public class frmClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxTipoDocumentoActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        //  nuevoProducto();
+        nuevoCliente();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // guardarRegistro();
+        guardarRegistro();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtApPaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApPaternoActionPerformed
@@ -747,7 +789,7 @@ public class frmClientes extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         int salir;
         salir = JOptionPane.showConfirmDialog(rootPane, "¿Desea Salir?");
-
+        
         if (salir == 0) {
             System.exit(0);
         }
@@ -789,7 +831,7 @@ public class frmClientes extends javax.swing.JFrame {
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
         int salir;
         salir = JOptionPane.showConfirmDialog(rootPane, "¿Desea Salir?");
-
+        
         if (salir == 0) {
             System.exit(0);
         }
@@ -802,7 +844,7 @@ public class frmClientes extends javax.swing.JFrame {
             //  mostrarDatos(txtBuscar.getText());
         }
     }//GEN-LAST:event_btnBuscar1ActionPerformed
-
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -839,17 +881,13 @@ public class frmClientes extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscar1;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminar1;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnGuardar1;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnNuevo1;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSalir1;
     private javax.swing.JComboBox<String> cbxTipoDocumento;
-    private javax.swing.JComboBox<String> cbxUnidadMedida1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -859,14 +897,10 @@ public class frmClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane3;
@@ -887,11 +921,8 @@ public class frmClientes extends javax.swing.JFrame {
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtId1;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombre1;
     private javax.swing.JTextField txtNumeroDocumento;
-    private javax.swing.JTextField txtPrecioUnitario1;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,9 +32,9 @@ public class ClienteImple implements ClienteDao {
         modelo = new DefaultTableModel(null, cabezera);
 
         //consulta
-        sql = "SELECT p.idPersona,"
+        sql = "SELECT p.idpersona,"
                 + "p.nombre,"
-                + "p.apaterno,"
+                + "p.apateno,"
                 + "p.amaterno,"
                 + "p.tipo_documento,"
                 + "p.num_documento,"
@@ -51,9 +51,9 @@ public class ClienteImple implements ClienteDao {
 
             //recorremos los registros
             while (rs.next()) {
-                registros[0] = rs.getString("idPersona");
+                registros[0] = rs.getString("idpersona");
                 registros[1] = rs.getString("nombre");
-                registros[2] = rs.getString("apaterno");
+                registros[2] = rs.getString("apateno");
                 registros[3] = rs.getString("amaterno");
                 registros[4] = rs.getString("tipo_documento");
                 registros[5] = rs.getString("num_documento");
@@ -65,7 +65,7 @@ public class ClienteImple implements ClienteDao {
                 totalRegistros++;
                 modelo.addRow(registros);
             }
-            conexion.desconectarBD();
+           // conexion.desconectarBD();
             return modelo;
         } catch (SQLException e) {
             System.out.println("Error al mostrar datos de la tabla producto; " + e.toString());
@@ -82,7 +82,7 @@ public class ClienteImple implements ClienteDao {
     @Override
     public void insertarCliente(Cliente cliente) {
         sql = "INSERT INTO persona"
-                + " (nombre,apaterno,amaterno,tipo_documento,num_documento,direccion,telefono,email)"
+                + " (nombre,apateno,amaterno,tipo_documento,num_documento,direccion,telefono,email)"
                 + "  VALUES (?,?,?,?,?,?,?,?)";
         sql2 = "INSERT INTO cliente (idpersona,codigo_cliente)"
                 + "VALUES ((SELECT idpersona FROM persona ORDER BY idpersona DESC LIMIT 1),?)";
@@ -106,7 +106,7 @@ public class ClienteImple implements ClienteDao {
             pst2.setString(1, cliente.getCodigoCliente());
             //ejecutamos
             pst.executeUpdate();
-            pst.executeUpdate();
+            pst2.executeUpdate();
 
             conexion.desconectarBD();
         } catch (SQLException e) {
@@ -119,7 +119,7 @@ public class ClienteImple implements ClienteDao {
     public void modificarCliente(Cliente cliente) {
         sql = "UPDATE persona "
                 + "SET nombre = ?,"
-                + "apaterno = ?,"
+                + "apateno = ?,"
                 + "amaterno = ?,"
                 + "tipo_documento = ?,"
                 + "num_documento = ?,"
@@ -152,7 +152,7 @@ public class ClienteImple implements ClienteDao {
 
             //ejecutamos
             pst.executeUpdate();
-            pst.executeUpdate();
+            pst2.executeUpdate();
             conexion.desconectarBD();
         } catch (SQLException e) {
             System.out.println("Error al modificar cliente: " + e.toString());
