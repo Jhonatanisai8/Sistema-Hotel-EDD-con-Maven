@@ -3,9 +3,7 @@ package org.jhonatan.app.Presentacion;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.jhonatan.app.Datos.Habitacion;
 import org.jhonatan.app.Datos.Producto;
-import org.jhonatan.app.Logica.FHabitacion;
 import org.jhonatan.app.Logica.ProductoImplementacion;
 
 /**
