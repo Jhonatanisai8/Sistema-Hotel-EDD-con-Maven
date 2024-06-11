@@ -2,6 +2,8 @@ package org.jhonatan.app.Presentacion;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.jhonatan.app.Logica.ProductoImplementacion;
 
 /**
  *
@@ -13,6 +15,7 @@ public class frmClientes extends javax.swing.JFrame {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
         inHabilitar();
+        mostrarDatos("");
     }
 
     private String accion = "guardar";
@@ -81,6 +84,24 @@ public class frmClientes extends javax.swing.JFrame {
         txtEmail.setText("");
         txtNumeroDocumento.setText("");
         txtNombre.requestFocus();
+    }
+
+    private void mostrarDatos(String buscar) {
+        try {
+            DefaultTableModel modelo;
+            //creamos una instancia de la clase      ProductoImplementacion       //FHabitacion func = new FHabitacion();
+            ProductoImplementacion productoImplementacion = new ProductoImplementacion();
+
+            //llamamos al funcion mostrar de la clase ProductoImplementacion
+            modelo = productoImplementacion.mostrarProductos(buscar);
+
+            tblDatos.setModel(modelo);
+            ocultarColumnas();
+
+            lblTotalRegistros.setText("Total de registros: " + productoImplementacion.totalRegistros);
+        } catch (Exception e) {
+            System.out.println("Error al mostrar CLIENTES: " + e.toString());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -477,7 +498,7 @@ public class frmClientes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NOMBRE", "APP. PATERNO", "APP. MATERNO", "TIPO DOCUMENTO", "Nº DOC", "DIRECIÓN", "TELEFONO", "EMAIL"
+                "ID", "NOMBRE", "APP. PATERNO", "APP. MATERNO", "TIPO DOCUMENTO", "Nº DOC", "DIRECIÓN", "TELEFONO", "EMAIL", "COD. CLIEN"
             }
         ));
         tblDatos1.addMouseListener(new java.awt.event.MouseAdapter() {
