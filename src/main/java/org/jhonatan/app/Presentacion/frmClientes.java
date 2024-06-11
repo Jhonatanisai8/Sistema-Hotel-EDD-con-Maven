@@ -12,7 +12,15 @@ public class frmClientes extends javax.swing.JFrame {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
     }
-    
+
+    private String accion = "guardar";
+
+    //la columa a ocultar es la que contiene el Id habitacion
+    private void ocultarColumnas() {
+        tblDatos.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
+        tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
