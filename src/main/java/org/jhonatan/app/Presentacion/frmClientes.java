@@ -54,6 +54,35 @@ public class frmClientes extends javax.swing.JFrame {
 
     }
 
+    private void habilitar() {
+        txtId.setVisible(false);
+        cbxTipoDocumento.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtApPaterno.setEnabled(true);
+        txtAppMaterno.setEnabled(true);
+        txtCodigo.setEnabled(true);
+        txtDireccion.setEnabled(true);
+        txtEmail.setEnabled(true);
+        txtNumeroDocumento.setEnabled(true);
+        txtTelefono.setEnabled(true);
+        //botones
+        btnGuardar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnEliminar.setEnabled(true);
+
+        //cajas de texto 
+        txtId.setText("");
+        cbxTipoDocumento.setSelectedIndex(0);
+        txtNombre.setText("");
+        txtApPaterno.setText("");
+        txtAppMaterno.setText("");
+        txtCodigo.setText("");
+        txtDireccion.setText("");
+        txtEmail.setText("");
+        txtNumeroDocumento.setText("");
+        txtNombre.requestFocus();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
