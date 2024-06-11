@@ -109,7 +109,50 @@ public class frmClientes extends javax.swing.JFrame {
         btnGuardar.setText("Guardar");
         accion = "guardar";
     }
-    
+
+    private String validarCampos() {
+        if (txtNombre.getText().trim().isEmpty()) {
+            txtNombre.requestFocus();
+            return "Nombre";
+        }
+
+        if (txtApPaterno.getText().length() == 0) {
+            txtApPaterno.requestFocus();
+            return "Apellido Paterno";
+        }
+
+        if (txtAppMaterno.getText().length() == 0) {
+            txtAppMaterno.requestFocus();
+            return "Apellido Materno";
+        }
+
+        if (txtDireccion.getText().length() == 0) {
+            txtDireccion.requestFocus();
+            return "Dirección";
+        }
+
+        if (txtTelefono.getText().length() == 0) {
+            txtTelefono.requestFocus();
+            return "Telefono";
+        }
+
+        if (txtEmail.getText().length() == 0) {
+            txtEmail.requestFocus();
+            return "Email";
+        }
+        if (txtNumeroDocumento.getText().length() == 0 || (Double.parseDouble(txtNumeroDocumento.getText()) < 0)) {
+            txtNumeroDocumento.requestFocus();
+            return "Nº de Documento";
+        }
+
+        if (cbxTipoDocumento.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
+            cbxTipoDocumento.requestFocus();
+            return "Tipo documento";
+        }
+
+        //si aquellos campos estan vacios returnamos un texto vacio
+        return "";
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
