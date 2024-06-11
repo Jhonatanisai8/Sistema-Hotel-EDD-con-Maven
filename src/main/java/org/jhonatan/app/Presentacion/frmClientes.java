@@ -1,6 +1,7 @@
 package org.jhonatan.app.Presentacion;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,6 +12,7 @@ public class frmClientes extends javax.swing.JFrame {
     public frmClientes() {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
+        inHabilitar();
     }
 
     private String accion = "guardar";
@@ -20,6 +22,36 @@ public class frmClientes extends javax.swing.JFrame {
         tblDatos.getColumnModel().getColumn(0).setMaxWidth(0);
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
+
+    private void inHabilitar() {
+        txtId.setVisible(false);
+        cbxTipoDocumento.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtApPaterno.setEnabled(false);
+        txtAppMaterno.setEnabled(false);
+        txtCodigo.setEnabled(false);
+        txtDireccion.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtNumeroDocumento.setEnabled(false);
+        txtTelefono.setEnabled(false);
+        //botones
+        btnGuardar.setEnabled(false);
+        btnCancelar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+
+        //cajas de texto 
+        txtId.setText("");
+        cbxTipoDocumento.setSelectedIndex(0);
+        txtNombre.setText("");
+        txtApPaterno.setText("");
+        txtAppMaterno.setText("");
+        txtCodigo.setText("");
+        txtDireccion.setText("");
+        txtEmail.setText("");
+        txtNumeroDocumento.setText("");
+        txtNombre.requestFocus();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -554,11 +586,11 @@ public class frmClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxTipoDocumentoActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        nuevoProducto();
+        //  nuevoProducto();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        guardarRegistro();
+        // guardarRegistro();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtApPaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApPaternoActionPerformed
@@ -591,6 +623,7 @@ public class frmClientes extends javax.swing.JFrame {
 
     private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
 
+        /*
         btnGuardar.setText("Editar");
         habilitar();
         btnEliminar.setEnabled(true);
@@ -603,10 +636,12 @@ public class frmClientes extends javax.swing.JFrame {
         cbxUnidadMedida.setSelectedItem(tblDatos.getValueAt(fila, 3).toString());
         txtDescripcion.setText(tblDatos.getValueAt(fila, 2).toString());
         txtPrecioUnitario.setText(tblDatos.getValueAt(fila, 4).toString());
+        
+         */
     }//GEN-LAST:event_tblDatosMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        elimarProducto();
+        //  elimarProducto();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -619,15 +654,18 @@ public class frmClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        if (txtBuscar.getText().trim().isEmpty()) {
+        /*
+         if (txtBuscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingresa la habitacion a buscar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         } else {
             mostrarDatos(txtBuscar.getText());
         }
+         */
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tblDatos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatos1MouseClicked
-
+        /*
+        
         btnGuardar.setText("Editar");
         habilitar();
         btnEliminar.setEnabled(true);
@@ -640,10 +678,12 @@ public class frmClientes extends javax.swing.JFrame {
         cbxUnidadMedida.setSelectedItem(tblDatos.getValueAt(fila, 3).toString());
         txtDescripcion.setText(tblDatos.getValueAt(fila, 2).toString());
         txtPrecioUnitario.setText(tblDatos.getValueAt(fila, 4).toString());
+        
+         */
     }//GEN-LAST:event_tblDatos1MouseClicked
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-        elimarProducto();
+        //    elimarProducto();
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
@@ -659,7 +699,7 @@ public class frmClientes extends javax.swing.JFrame {
         if (txtBuscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingresa la habitacion a buscar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         } else {
-            mostrarDatos(txtBuscar.getText());
+            //  mostrarDatos(txtBuscar.getText());
         }
     }//GEN-LAST:event_btnBuscar1ActionPerformed
 
