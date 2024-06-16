@@ -716,6 +716,9 @@
               <Font name="Berlin Sans FB Demi" size="10" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBuscar1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEliminar1">
           <Properties>

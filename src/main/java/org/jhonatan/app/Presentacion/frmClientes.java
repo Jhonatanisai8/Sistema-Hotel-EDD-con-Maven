@@ -197,6 +197,26 @@ public class frmClientes extends javax.swing.JFrame {
         }
     }
 
+    private void eliminarCliente() {
+        if (!txtId.getText().trim().isEmpty()) {
+            int confirmar;
+            confirmar = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de eliminar dicho cliente?", "CONFIRMA", JOptionPane.WARNING_MESSAGE);
+
+            //si la confirmacion es si eliminamos
+            if (confirmar == 0) {
+                ClienteImple clienteImple = new ClienteImple();
+                Cliente cliente = new Cliente();
+                //habitacion.setIdHabitacion(Integer.parseInt(txtId.getText()));
+                cliente.setIdPersona(Integer.parseInt(txtId.getText()));
+                clienteImple.eliminarCliente(cliente);
+                mostrarDatos("");
+                inHabilitar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingrese el Id del cliente a Eliminar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -602,6 +622,11 @@ public class frmClientes extends javax.swing.JFrame {
         jScrollPane4.setViewportView(tblDatos1);
 
         txtBuscar1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 10)); // NOI18N
+        txtBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscar1ActionPerformed(evt);
+            }
+        });
 
         btnEliminar1.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminar.png"))); // NOI18N
@@ -783,13 +808,13 @@ public class frmClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        /*
-         if (txtBuscar.getText().trim().isEmpty()) {
+
+        if (txtBuscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingresa la habitacion a buscar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         } else {
             mostrarDatos(txtBuscar.getText());
         }
-         */
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tblDatos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatos1MouseClicked
@@ -816,8 +841,9 @@ public class frmClientes extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tblDatos1MouseClicked
 
+
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-        //    elimarProducto();
+        eliminarCliente();
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
@@ -830,12 +856,16 @@ public class frmClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalir1ActionPerformed
 
     private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
-        if (txtBuscar.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa la habitacion a buscar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+        if (txtBuscar1.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Por favor el Nº de documento del cliente a buscar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         } else {
-            //  mostrarDatos(txtBuscar.getText());
+            mostrarDatos(txtBuscar.getText());
         }
     }//GEN-LAST:event_btnBuscar1ActionPerformed
+
+    private void txtBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscar1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
