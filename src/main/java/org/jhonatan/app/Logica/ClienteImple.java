@@ -129,7 +129,7 @@ public class ClienteImple implements ClienteDao {
                 + " WHERE idpersona = ?";
 
         sql2 = "UPDATE cliente "
-                + "SET codigo_cliente = ? WHERE idcliente = ?";
+                + "SET codigo_cliente = ? WHERE idpersona = ?";
         try {
             Connection conex = conexion.conectarBD();
             PreparedStatement pst = conex.prepareStatement(sql);
@@ -144,7 +144,7 @@ public class ClienteImple implements ClienteDao {
             pst.setString(6, cliente.getDireccion());
             pst.setString(7, cliente.getTelefono());
             pst.setString(8, cliente.getEmail());
-            pst.setInt(8, cliente.getIdPersona());
+            pst.setInt(9, cliente.getIdPersona());
 
             //para la segunda consulta
             pst2.setString(1, cliente.getCodigoCliente());
