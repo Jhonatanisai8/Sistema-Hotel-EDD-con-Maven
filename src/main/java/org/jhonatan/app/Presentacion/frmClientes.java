@@ -54,6 +54,7 @@ public class frmClientes extends javax.swing.JFrame {
         txtDireccion.setText("");
         txtEmail.setText("");
         txtNumeroDocumento.setText("");
+        txtTelefono.setText("");
         txtNombre.requestFocus();
         
     }
