@@ -11,14 +11,14 @@ import org.jhonatan.app.Logica.ClienteImple;
  * @author Jhonatan
  */
 public class frmClientes extends javax.swing.JFrame {
-    
+
     public frmClientes() {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
         mostrarDatos("");
         inHabilitar();
     }
-    
+
     private String accion = "guardar";
 
     //la columa a ocultar es la que contiene el Id habitacion
@@ -27,7 +27,7 @@ public class frmClientes extends javax.swing.JFrame {
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
     }
-    
+
     private void inHabilitar() {
         txtId.setVisible(false);
         cbxTipoDocumento.setEnabled(false);
@@ -56,9 +56,9 @@ public class frmClientes extends javax.swing.JFrame {
         txtNumeroDocumento.setText("");
         txtTelefono.setText("");
         txtNombre.requestFocus();
-        
+
     }
-    
+
     private void habilitar() {
         txtId.setVisible(false);
         cbxTipoDocumento.setEnabled(true);
@@ -87,7 +87,7 @@ public class frmClientes extends javax.swing.JFrame {
         txtNumeroDocumento.setText("");
         txtNombre.requestFocus();
     }
-    
+
     private void mostrarDatos(String buscar) {
         try {
             DefaultTableModel modelo;
@@ -96,48 +96,48 @@ public class frmClientes extends javax.swing.JFrame {
             ClienteImple clienteImple = new ClienteImple();
             //llamamos al funcion mostrar de la clase ProductoImplementacion
             modelo = clienteImple.mostrarClientes(buscar);
-            
+
             tblDatos1.setModel(modelo);
             ocultarColumnas();
-            
+
             lblTotalRegistros.setText("Total de registros: " + clienteImple.totalRegistros);
         } catch (Exception e) {
             System.out.println("Error al mostrar CLIENTES: " + e.toString());
         }
     }
-    
+
     public void nuevoCliente() {
         habilitar();
         btnGuardar.setText("Guardar");
         accion = "guardar";
     }
-    
+
     private String validarCampos() {
         if (txtNombre.getText().trim().isEmpty()) {
             txtNombre.requestFocus();
             return "Nombre";
         }
-        
+
         if (txtApPaterno.getText().length() == 0) {
             txtApPaterno.requestFocus();
             return "Apellido Paterno";
         }
-        
+
         if (txtAppMaterno.getText().length() == 0) {
             txtAppMaterno.requestFocus();
             return "Apellido Materno";
         }
-        
+
         if (txtDireccion.getText().length() == 0) {
             txtDireccion.requestFocus();
             return "Dirección";
         }
-        
+
         if (txtTelefono.getText().length() == 0) {
             txtTelefono.requestFocus();
             return "Telefono";
         }
-        
+
         if (txtEmail.getText().length() == 0) {
             txtEmail.requestFocus();
             return "Email";
@@ -146,7 +146,7 @@ public class frmClientes extends javax.swing.JFrame {
             txtNumeroDocumento.requestFocus();
             return "Nº de Documento";
         }
-        
+
         if (cbxTipoDocumento.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
             cbxTipoDocumento.requestFocus();
             return "Tipo documento";
@@ -155,7 +155,7 @@ public class frmClientes extends javax.swing.JFrame {
         //si aquellos campos estan vacios returnamos un texto vacio
         return "";
     }
-    
+
     private void guardarRegistro() {
         String campo;
         campo = validarCampos();
@@ -168,7 +168,7 @@ public class frmClientes extends javax.swing.JFrame {
             cliente.setNombre(txtNombre.getText());
             int seleccion = cbxTipoDocumento.getSelectedIndex();
             cliente.setTipoDocumento(cbxTipoDocumento.getItemAt(seleccion));
-            
+
             cliente.setAppPaterno(txtApPaterno.getText());
             cliente.setAppMaterno(txtAppMaterno.getText());
             cliente.setNumeroDocumento(txtNumeroDocumento.getText());
@@ -176,7 +176,7 @@ public class frmClientes extends javax.swing.JFrame {
             cliente.setTelefono(txtTelefono.getText());
             cliente.setEmail(txtEmail.getText());
             cliente.setCodigoCliente(txtCodigo.getText());
-            
+
             if (accion.equalsIgnoreCase("Guardar")) {
                 //llamamos al metodo de la clase ProductoImplementacion
                 clienteImple.insertarCliente(cliente);
@@ -184,7 +184,7 @@ public class frmClientes extends javax.swing.JFrame {
                 //llamos al procecimiento mostrar
                 mostrarDatos("");
                 inHabilitar();
-                
+
             } else if (accion.equalsIgnoreCase("EDITAR")) {
                 cliente.setIdPersona(Integer.parseInt(txtId.getText()));
                 clienteImple.modificarCliente(cliente);
@@ -196,7 +196,7 @@ public class frmClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Verifique los  datos en el campo: " + campo, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -766,21 +766,7 @@ public class frmClientes extends javax.swing.JFrame {
 
     private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
 
-        /*
-        btnGuardar.setText("Editar");
-        habilitar();
-        btnEliminar.setEnabled(true);
-        accion = "Editar";
 
-        //obtenemos la fila selecionada
-        int fila = tblDatos.rowAtPoint(evt.getPoint());
-        txtId.setText(tblDatos.getValueAt(fila, 0).toString());
-        txtNombre.setText(tblDatos.getValueAt(fila, 1).toString());
-        cbxUnidadMedida.setSelectedItem(tblDatos.getValueAt(fila, 3).toString());
-        txtDescripcion.setText(tblDatos.getValueAt(fila, 2).toString());
-        txtPrecioUnitario.setText(tblDatos.getValueAt(fila, 4).toString());
-        
-         */
     }//GEN-LAST:event_tblDatosMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -790,7 +776,7 @@ public class frmClientes extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         int salir;
         salir = JOptionPane.showConfirmDialog(rootPane, "¿Desea Salir?");
-        
+
         if (salir == 0) {
             System.exit(0);
         }
@@ -807,22 +793,27 @@ public class frmClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tblDatos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatos1MouseClicked
-        /*
-        
+
         btnGuardar.setText("Editar");
         habilitar();
         btnEliminar.setEnabled(true);
         accion = "Editar";
 
         //obtenemos la fila selecionada
-        int fila = tblDatos.rowAtPoint(evt.getPoint());
-        txtId.setText(tblDatos.getValueAt(fila, 0).toString());
-        txtNombre.setText(tblDatos.getValueAt(fila, 1).toString());
-        cbxUnidadMedida.setSelectedItem(tblDatos.getValueAt(fila, 3).toString());
-        txtDescripcion.setText(tblDatos.getValueAt(fila, 2).toString());
-        txtPrecioUnitario.setText(tblDatos.getValueAt(fila, 4).toString());
-        
-         */
+        int fila = tblDatos1.rowAtPoint(evt.getPoint());
+
+        //mostramos los datos de esa fila seleccionada
+        txtId.setText(tblDatos1.getValueAt(fila, 0).toString());
+        txtNombre.setText(tblDatos1.getValueAt(fila, 1).toString());
+        txtApPaterno.setText(tblDatos1.getValueAt(fila, 2).toString());
+        txtAppMaterno.setText(tblDatos1.getValueAt(fila, 3).toString());
+        cbxTipoDocumento.setSelectedItem(tblDatos1.getValueAt(fila, 4));
+        txtNumeroDocumento.setText(tblDatos1.getValueAt(fila, 5).toString());
+        txtDireccion.setText(tblDatos1.getValueAt(fila, 6).toString());
+        txtTelefono.setText(tblDatos1.getValueAt(fila, 7).toString());
+        txtEmail.setText(tblDatos1.getValueAt(fila, 8).toString());
+        txtCodigo.setText(tblDatos1.getValueAt(fila, 9).toString());
+
     }//GEN-LAST:event_tblDatos1MouseClicked
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
@@ -832,7 +823,7 @@ public class frmClientes extends javax.swing.JFrame {
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
         int salir;
         salir = JOptionPane.showConfirmDialog(rootPane, "¿Desea Salir?");
-        
+
         if (salir == 0) {
             System.exit(0);
         }
@@ -845,7 +836,7 @@ public class frmClientes extends javax.swing.JFrame {
             //  mostrarDatos(txtBuscar.getText());
         }
     }//GEN-LAST:event_btnBuscar1ActionPerformed
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
