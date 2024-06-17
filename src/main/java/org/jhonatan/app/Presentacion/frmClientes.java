@@ -133,7 +133,7 @@ public class frmClientes extends javax.swing.JFrame {
             return "Dirección";
         }
 
-        if (txtTelefono.getText().length() == 0) {
+        if (txtTelefono.getText().length() == 0 || Integer.parseInt(txtTelefono.getText()) < 0 || txtTelefono.getText().length() > 9) {
             txtTelefono.requestFocus();
             return "Telefono";
         }
@@ -142,7 +142,7 @@ public class frmClientes extends javax.swing.JFrame {
             txtEmail.requestFocus();
             return "Email";
         }
-        if (txtNumeroDocumento.getText().length() == 0 || (Double.parseDouble(txtNumeroDocumento.getText()) < 0)) {
+        if (txtNumeroDocumento.getText().length() == 0 || (Integer.parseInt(txtNumeroDocumento.getText()) < 0) || txtNumeroDocumento.getText().length() > 9) {
             txtNumeroDocumento.requestFocus();
             return "Nº de Documento";
         }
