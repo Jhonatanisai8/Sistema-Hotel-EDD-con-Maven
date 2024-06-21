@@ -86,6 +86,43 @@ public class TrabajadorImple implements TrabajadorDao {
 
     @Override
     public void insertarTrabajador(Trabajador trabajador) {
+        sql = "INSERT INTO persona"
+                + " (nombre,apateno,amaterno,tipo_documento,num_documento,direccion,telefono,email)"
+                + "  VALUES (?,?,?,?,?,?,?,?)";
+        sql2 = "INSERT INTO trabajador (idpersona,sueldo,acceso,login,password,estado)"
+                + "VALUES ((SELECT idpersona FROM persona ORDER BY idpersona DESC LIMIT 1),?,?,?,?,?)";
+        try {
+            Connection conex = conexion.conectarBD();
+
+            PreparedStatement pst = conex.prepareStatement(sql);
+            PreparedStatement pst2 = conex.prepareStatement(sql2);
+
+            //insertamos
+            pst.setString(1, trabajador.getNombre());
+            pst.setString(2, trabajador.getAppPaterno());
+            pst.setString(3, trabajador.getAppMaterno());
+            pst.setString(4, trabajador.getTipoDocumento());
+            pst.setString(5, trabajador.getNumeroDocumento());
+            pst.setString(6, trabajador.getDireccion());
+            pst.setString(7, trabajador.getTelefono());
+            pst.setString(8, trabajador.getEmail());
+
+            //para la segunda consulta
+            pst2.setDouble(1, trabajador.getSueldo());
+            pst2.setString(2, trabajador.getAcceso());
+            pst2.setString(3, trabajador.getLogin());
+            pst2.setString(4, trabajador.getPassword());
+            pst2.setString(5, trabajador.getEstado());
+
+            //ejecutamos
+            pst.executeUpdate();
+            pst2.executeUpdate();
+
+            conexion.desconectarBD();
+        } catch (SQLException e) {
+            System.out.println("Error al insertar trabajador: "
+                    + e.toString());
+        }
     }
 
     @Override
