@@ -100,7 +100,7 @@ public class frmClientes extends javax.swing.JFrame {
             tblDatos1.setModel(modelo);
             ocultarColumnas();
 
-            lblTotalRegistros.setText("Total de registros: " + clienteImple.totalRegistros);
+            lblTotalRegistros1.setText("Total de registros: " + clienteImple.totalRegistros);
         } catch (Exception e) {
             System.out.println("Error al mostrar CLIENTES: " + e.toString());
         }
@@ -621,7 +621,7 @@ public class frmClientes extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblDatos1);
 
-        txtBuscar1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 10)); // NOI18N
+        txtBuscar1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         txtBuscar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscar1ActionPerformed(evt);
@@ -733,7 +733,7 @@ public class frmClientes extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -859,7 +859,7 @@ public class frmClientes extends javax.swing.JFrame {
         if (txtBuscar1.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Por favor el Nº de documento del cliente a buscar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         } else {
-            mostrarDatos(txtBuscar.getText());
+            mostrarDatos(txtBuscar1.getText());
         }
     }//GEN-LAST:event_btnBuscar1ActionPerformed
 
