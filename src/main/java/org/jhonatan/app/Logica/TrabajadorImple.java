@@ -127,6 +127,50 @@ public class TrabajadorImple implements TrabajadorDao {
 
     @Override
     public void modificarTrabajador(Trabajador trabajador) {
+        sql = "UPDATE persona "
+                + "SET nombre = ?,"
+                + "apateno = ?,"
+                + "amaterno = ?,"
+                + "tipo_documento = ?,"
+                + "num_documento = ?,"
+                + "direccion = ?, "
+                + "telefono = ?,"
+                + "email = ?"
+                + " WHERE idpersona = ?";
+
+        sql2 = "UPDATE trabajador "
+                + "SET sueldo = ?, acceso = ?, login = ?, password = ?, estado = ? WHERE idpersona = ?";
+        try {
+            Connection conex = conexion.conectarBD();
+            PreparedStatement pst = conex.prepareStatement(sql);
+            PreparedStatement pst2 = conex.prepareStatement(sql2);
+
+            //insertamos
+            pst.setString(1, trabajador.getNombre());
+            pst.setString(2, trabajador.getAppPaterno());
+            pst.setString(3, trabajador.getAppMaterno());
+            pst.setString(4, trabajador.getTipoDocumento());
+            pst.setString(5, trabajador.getNumeroDocumento());
+            pst.setString(6, trabajador.getDireccion());
+            pst.setString(7, trabajador.getTelefono());
+            pst.setString(8, trabajador.getEmail());
+            pst.setInt(9, trabajador.getIdPersona());
+
+            //para la segunda consulta
+            pst2.setDouble(1, trabajador.getSueldo());
+            pst2.setString(2, trabajador.getAcceso());
+            pst2.setString(3, trabajador.getLogin());
+            pst2.setString(4, trabajador.getPassword());
+            pst2.setString(5, trabajador.getEstado());
+            pst2.setInt(6, trabajador.getIdPersona());
+
+            //ejecutamos
+            pst.executeUpdate();
+            pst2.executeUpdate();
+            conexion.desconectarBD();
+        } catch (SQLException e) {
+            System.out.println("Error al modificar trabajador: " + e.toString());
+        }
     }
 
     @Override
