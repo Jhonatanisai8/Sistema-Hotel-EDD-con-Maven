@@ -68,7 +68,7 @@ public class ClienteImple implements ClienteDao {
             // conexion.desconectarBD();
             return modelo;
         } catch (SQLException e) {
-            System.out.println("Error al mostrar datos de la tabla producto; " + e.toString());
+            System.out.println("Error al mostrar datos de la tabla clientes; " + e.toString());
             return null;
         } finally {
             try {
