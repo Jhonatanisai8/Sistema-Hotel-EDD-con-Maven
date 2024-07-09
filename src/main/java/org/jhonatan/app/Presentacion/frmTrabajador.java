@@ -251,16 +251,16 @@ public class frmTrabajador extends javax.swing.JFrame {
 
             //si la confirmacion es si eliminamos
             if (confirmar == 0) {
-                ClienteImple clienteImple = new ClienteImple();
-                Cliente cliente = new Cliente();
+                TrabajadorImple trabajadorImple = new TrabajadorImple();
+                Trabajador trabajador = new Trabajador();
                 //habitacion.setIdHabitacion(Integer.parseInt(txtId.getText()));
-                cliente.setIdPersona(Integer.parseInt(txtId.getText()));
-                clienteImple.eliminarCliente(cliente);
+                trabajador.setIdPersona(Integer.parseInt(txtId.getText()));
+                trabajadorImple.eliminarTrabajador(trabajador);
                 mostrarDatos("");
                 inHabilitar();
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Por favor ingrese el Id del cliente a Eliminar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingrese el Id del Trabajador a Eliminar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         }
     }
 
