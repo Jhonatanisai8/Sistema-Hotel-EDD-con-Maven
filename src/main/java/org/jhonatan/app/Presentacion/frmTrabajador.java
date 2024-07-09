@@ -979,8 +979,13 @@ public class frmTrabajador extends javax.swing.JFrame {
         txtDireccion.setText(tblDatos1.getValueAt(fila, 6).toString());
         txtTelefono.setText(tblDatos1.getValueAt(fila, 7).toString());
         txtEmail.setText(tblDatos1.getValueAt(fila, 8).toString());
-        txtSueldo.setText(tblDatos1.getValueAt(fila, 9).toString());
 
+        //atributos de trabajador
+        txtSueldo.setText(tblDatos1.getValueAt(fila, 9).toString());
+        cbxAcceso.setSelectedItem(tblDatos1.getValueAt(fila, 10).toString());
+        txtLogin.setText(tblDatos1.getValueAt(fila, 11).toString());
+        txtPassword.setText(tblDatos1.getValueAt(fila, 12).toString());
+        cbxEstado.setSelectedItem(tblDatos1.getValueAt(fila, 13).toString());
     }//GEN-LAST:event_tblDatos1MouseClicked
 
 
