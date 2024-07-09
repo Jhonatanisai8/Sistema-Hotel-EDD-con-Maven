@@ -11,14 +11,14 @@ import org.jhonatan.app.Logica.ClienteImple;
  * @author Jhonatan
  */
 public class frmTrabajador extends javax.swing.JFrame {
-
+    
     public frmTrabajador() {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
         mostrarDatos("");
         inHabilitar();
     }
-
+    
     private String accion = "guardar";
 
     //la columa a ocultar es la que contiene el Id habitacion
@@ -27,7 +27,7 @@ public class frmTrabajador extends javax.swing.JFrame {
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
     }
-
+    
     private void inHabilitar() {
         txtId.setVisible(false);
         cbxTipoDocumento.setEnabled(false);
@@ -53,12 +53,15 @@ public class frmTrabajador extends javax.swing.JFrame {
         txtSueldo.setText("");
         txtDireccion.setText("");
         txtEmail.setText("");
+        txtLogin.setText("");
+        txtPassword.setText("");
         txtNumeroDocumento.setText("");
         txtTelefono.setText("");
         txtNombre.requestFocus();
-
+        cbxAcceso.setSelectedIndex(0);
+        cbxEstado.setSelectedIndex(0);
     }
-
+    
     private void habilitar() {
         txtId.setVisible(false);
         cbxTipoDocumento.setEnabled(true);
@@ -87,7 +90,7 @@ public class frmTrabajador extends javax.swing.JFrame {
         txtNumeroDocumento.setText("");
         txtNombre.requestFocus();
     }
-
+    
     private void mostrarDatos(String buscar) {
         try {
             DefaultTableModel modelo;
@@ -96,48 +99,48 @@ public class frmTrabajador extends javax.swing.JFrame {
             ClienteImple clienteImple = new ClienteImple();
             //llamamos al funcion mostrar de la clase ProductoImplementacion
             modelo = clienteImple.mostrarClientes(buscar);
-
+            
             tblDatos1.setModel(modelo);
             ocultarColumnas();
-
+            
             lblTotalRegistros1.setText("Total de registros: " + clienteImple.totalRegistros);
         } catch (Exception e) {
             System.out.println("Error al mostrar CLIENTES: " + e.toString());
         }
     }
-
+    
     public void nuevoCliente() {
         habilitar();
         btnGuardar.setText("Guardar");
         accion = "guardar";
     }
-
+    
     private String validarCampos() {
         if (txtNombre.getText().trim().isEmpty()) {
             txtNombre.requestFocus();
             return "Nombre";
         }
-
+        
         if (txtApPaterno.getText().length() == 0) {
             txtApPaterno.requestFocus();
             return "Apellido Paterno";
         }
-
+        
         if (txtAppMaterno.getText().length() == 0) {
             txtAppMaterno.requestFocus();
             return "Apellido Materno";
         }
-
+        
         if (txtDireccion.getText().length() == 0) {
             txtDireccion.requestFocus();
             return "Dirección";
         }
-
+        
         if (txtTelefono.getText().length() == 0 || Integer.parseInt(txtTelefono.getText()) < 0 || txtTelefono.getText().length() > 9) {
             txtTelefono.requestFocus();
             return "Telefono";
         }
-
+        
         if (txtEmail.getText().length() == 0) {
             txtEmail.requestFocus();
             return "Email";
@@ -146,7 +149,7 @@ public class frmTrabajador extends javax.swing.JFrame {
             txtNumeroDocumento.requestFocus();
             return "Nº de Documento";
         }
-
+        
         if (cbxTipoDocumento.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
             cbxTipoDocumento.requestFocus();
             return "Tipo documento";
@@ -155,7 +158,7 @@ public class frmTrabajador extends javax.swing.JFrame {
         //si aquellos campos estan vacios returnamos un texto vacio
         return "";
     }
-
+    
     private void guardarRegistro() {
         String campo;
         campo = validarCampos();
@@ -168,7 +171,7 @@ public class frmTrabajador extends javax.swing.JFrame {
             cliente.setNombre(txtNombre.getText());
             int seleccion = cbxTipoDocumento.getSelectedIndex();
             cliente.setTipoDocumento(cbxTipoDocumento.getItemAt(seleccion));
-
+            
             cliente.setAppPaterno(txtApPaterno.getText());
             cliente.setAppMaterno(txtAppMaterno.getText());
             cliente.setNumeroDocumento(txtNumeroDocumento.getText());
@@ -176,7 +179,7 @@ public class frmTrabajador extends javax.swing.JFrame {
             cliente.setTelefono(txtTelefono.getText());
             cliente.setEmail(txtEmail.getText());
             cliente.setCodigoCliente(txtSueldo.getText());
-
+            
             if (accion.equalsIgnoreCase("Guardar")) {
                 //llamamos al metodo de la clase ProductoImplementacion
                 clienteImple.insertarCliente(cliente);
@@ -184,7 +187,7 @@ public class frmTrabajador extends javax.swing.JFrame {
                 //llamos al procecimiento mostrar
                 mostrarDatos("");
                 inHabilitar();
-
+                
             } else if (accion.equalsIgnoreCase("EDITAR")) {
                 cliente.setIdPersona(Integer.parseInt(txtId.getText()));
                 clienteImple.modificarCliente(cliente);
@@ -196,7 +199,7 @@ public class frmTrabajador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Verifique los  datos en el campo: " + campo, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     private void eliminarCliente() {
         if (!txtId.getText().trim().isEmpty()) {
             int confirmar;
@@ -216,7 +219,7 @@ public class frmTrabajador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingrese el Id del cliente a Eliminar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -885,7 +888,7 @@ public class frmTrabajador extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSueldoActionPerformed
 
     private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
-
+        
 
     }//GEN-LAST:event_tblDatosMouseClicked
 
@@ -896,14 +899,14 @@ public class frmTrabajador extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         int salir;
         salir = JOptionPane.showConfirmDialog(rootPane, "¿Desea Salir?");
-
+        
         if (salir == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
+        
         if (txtBuscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingresa la habitacion a buscar", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -913,7 +916,7 @@ public class frmTrabajador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tblDatos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatos1MouseClicked
-
+        
         btnGuardar.setText("Editar");
         habilitar();
         btnEliminar.setEnabled(true);
@@ -935,7 +938,7 @@ public class frmTrabajador extends javax.swing.JFrame {
         txtSueldo.setText(tblDatos1.getValueAt(fila, 9).toString());
 
     }//GEN-LAST:event_tblDatos1MouseClicked
-
+    
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
         eliminarCliente();
@@ -944,7 +947,7 @@ public class frmTrabajador extends javax.swing.JFrame {
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
         int salir;
         salir = JOptionPane.showConfirmDialog(rootPane, "¿Desea Salir?");
-
+        
         if (salir == 0) {
             System.exit(0);
         }
@@ -977,7 +980,7 @@ public class frmTrabajador extends javax.swing.JFrame {
     private void cbxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxEstadoActionPerformed
-
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
