@@ -144,6 +144,16 @@ public class frmTrabajador extends javax.swing.JFrame {
             return "Apellido Materno";
         }
 
+        if (cbxTipoDocumento.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
+            cbxTipoDocumento.requestFocus();
+            return "Tipo documento";
+        }
+
+        if (txtNumeroDocumento.getText().length() == 0 || (Integer.parseInt(txtNumeroDocumento.getText()) < 0) || txtNumeroDocumento.getText().length() > 9) {
+            txtNumeroDocumento.requestFocus();
+            return "Nº de Documento";
+        }
+
         if (txtDireccion.getText().length() == 0) {
             txtDireccion.requestFocus();
             return "Dirección";
@@ -158,14 +168,30 @@ public class frmTrabajador extends javax.swing.JFrame {
             txtEmail.requestFocus();
             return "Email";
         }
-        if (txtNumeroDocumento.getText().length() == 0 || (Integer.parseInt(txtNumeroDocumento.getText()) < 0) || txtNumeroDocumento.getText().length() > 9) {
-            txtNumeroDocumento.requestFocus();
-            return "Nº de Documento";
+
+        if (txtSueldo.getText().length() == 0 || Double.parseDouble(txtSueldo.getText()) < 0) {
+            txtSueldo.requestFocus();
+            return "Sueldo";
         }
 
-        if (cbxTipoDocumento.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
-            cbxTipoDocumento.requestFocus();
-            return "Tipo documento";
+        if (cbxAcceso.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
+            cbxAcceso.requestFocus();
+            return "Acceso";
+        }
+
+        if (txtLogin.getText().length() == 0) {
+            txtLogin.requestFocus();
+            return "Login";
+        }
+
+        if (txtPassword.getText().length() == 0) {
+            txtPassword.requestFocus();
+            return "Password";
+        }
+
+        if (cbxEstado.getSelectedItem().toString().equalsIgnoreCase("=Seleccionar=")) {
+            cbxEstado.requestFocus();
+            return "Estado";
         }
 
         //si aquellos campos estan vacios returnamos un texto vacio
