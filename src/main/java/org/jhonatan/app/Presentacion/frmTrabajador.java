@@ -39,7 +39,11 @@ public class frmTrabajador extends javax.swing.JFrame {
         txtEmail.setEnabled(false);
         txtNumeroDocumento.setEnabled(false);
         txtTelefono.setEnabled(false);
-        //botones
+        cbxAcceso.setEnabled(false);
+        txtLogin.setEnabled(false);
+        txtPassword.setEnabled(false);
+        cbxEstado.setEnabled(false);
+//botones
         btnGuardar.setEnabled(false);
         btnCancelar.setEnabled(false);
         btnEliminar.setEnabled(false);
@@ -73,6 +77,10 @@ public class frmTrabajador extends javax.swing.JFrame {
         txtEmail.setEnabled(true);
         txtNumeroDocumento.setEnabled(true);
         txtTelefono.setEnabled(true);
+        cbxAcceso.setEnabled(true);
+        txtLogin.setEnabled(true);
+        txtPassword.setEnabled(true);
+        cbxEstado.setEnabled(true);
         //botones
         btnGuardar.setEnabled(true);
         btnCancelar.setEnabled(true);
@@ -87,8 +95,13 @@ public class frmTrabajador extends javax.swing.JFrame {
         txtSueldo.setText("");
         txtDireccion.setText("");
         txtEmail.setText("");
+        txtLogin.setText("");
+        txtPassword.setText("");
         txtNumeroDocumento.setText("");
+        txtTelefono.setText("");
         txtNombre.requestFocus();
+        cbxAcceso.setSelectedIndex(0);
+        cbxEstado.setSelectedIndex(0);
     }
     
     private void mostrarDatos(String buscar) {
