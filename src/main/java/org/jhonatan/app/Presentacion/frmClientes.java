@@ -152,6 +152,10 @@ public class frmClientes extends javax.swing.JFrame {
             return "Tipo documento";
         }
 
+        if (txtCodigo.getText().length() == 0) {
+            txtCodigo.requestFocus();
+            return "Codigo";
+        }
         //si aquellos campos estan vacios returnamos un texto vacio
         return "";
     }
