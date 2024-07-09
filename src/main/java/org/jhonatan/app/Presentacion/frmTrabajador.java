@@ -4,6 +4,7 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighte
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.jhonatan.app.Datos.Cliente;
+import org.jhonatan.app.Datos.Trabajador;
 import org.jhonatan.app.Logica.ClienteImple;
 import org.jhonatan.app.Logica.TrabajadorImple;
 
@@ -201,36 +202,40 @@ public class frmTrabajador extends javax.swing.JFrame {
     private void guardarRegistro() {
         String campo;
         campo = validarCampos();
-        //Habitacion habitacion = new Habitacion();
-        //objetos de la clase cliente y la clase donde implementan los métodos
-        Cliente cliente = new Cliente();
-        ClienteImple clienteImple = new ClienteImple();
+        //objetos de la clase trabajador y la clase donde implementan los métodos
+        Trabajador trabajador = new Trabajador();
+        TrabajadorImple trabajadorImple = new TrabajadorImple();
         if (campo.equals("")) {
             //establecemos sus ATRIBUTOS
-            cliente.setNombre(txtNombre.getText());
+            trabajador.setNombre(txtNombre.getText());
             int seleccion = cbxTipoDocumento.getSelectedIndex();
-            cliente.setTipoDocumento(cbxTipoDocumento.getItemAt(seleccion));
+            trabajador.setTipoDocumento(cbxTipoDocumento.getItemAt(seleccion));
 
-            cliente.setAppPaterno(txtApPaterno.getText());
-            cliente.setAppMaterno(txtAppMaterno.getText());
-            cliente.setNumeroDocumento(txtNumeroDocumento.getText());
-            cliente.setDireccion(txtDireccion.getText());
-            cliente.setTelefono(txtTelefono.getText());
-            cliente.setEmail(txtEmail.getText());
-            cliente.setCodigoCliente(txtSueldo.getText());
+            trabajador.setAppPaterno(txtApPaterno.getText());
+            trabajador.setAppMaterno(txtAppMaterno.getText());
+            trabajador.setNumeroDocumento(txtNumeroDocumento.getText());
+            trabajador.setDireccion(txtDireccion.getText());
+            trabajador.setTelefono(txtTelefono.getText());
+            trabajador.setEmail(txtEmail.getText());
+
+            trabajador.setSueldo(Double.parseDouble(txtSueldo.getText()));
+            trabajador.setEstado(cbxEstado.getSelectedItem().toString());
+            trabajador.setLogin(txtLogin.getText());
+            trabajador.setPassword(txtPassword.getText());
+            trabajador.setAcceso(cbxAcceso.getSelectedItem().toString());
 
             if (accion.equalsIgnoreCase("Guardar")) {
-                //llamamos al metodo de la clase ProductoImplementacion
-                clienteImple.insertarCliente(cliente);
-                JOptionPane.showMessageDialog(rootPane, "ClIENTE REGISTRADO CON EXÍTO", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                //llamamos al metodo de la clase trabajadorImple
+                trabajadorImple.insertarTrabajador(trabajador);
+                JOptionPane.showMessageDialog(rootPane, "TRABAJADOR REGISTRADO CON EXÍTO", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                 //llamos al procecimiento mostrar
                 mostrarDatos("");
                 inHabilitar();
 
-            } else if (accion.equalsIgnoreCase("EDITAR")) {
-                cliente.setIdPersona(Integer.parseInt(txtId.getText()));
-                clienteImple.modificarCliente(cliente);
-                JOptionPane.showMessageDialog(rootPane, "EL CLIENTE FUE EDITADO EXITOSAMENTE", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+            } else if (accion.equalsIgnoreCase("Editar")) {
+                trabajador.setIdPersona(Integer.parseInt(txtId.getText()));
+                trabajadorImple.modificarTrabajador(trabajador);
+                JOptionPane.showMessageDialog(rootPane, "EL TRABAJADOR FUE EDITADO EXITOSAMENTE", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                 mostrarDatos("");
                 inHabilitar();
             }
