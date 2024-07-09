@@ -3,9 +3,7 @@ package org.jhonatan.app.Presentacion;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.jhonatan.app.Datos.Cliente;
 import org.jhonatan.app.Datos.Trabajador;
-import org.jhonatan.app.Logica.ClienteImple;
 import org.jhonatan.app.Logica.TrabajadorImple;
 
 /**
@@ -19,6 +17,7 @@ public class frmTrabajador extends javax.swing.JFrame {
         FlatMaterialLighterIJTheme.setup();
         mostrarDatos("");
         inHabilitar();
+        ocultarColumnas();
     }
 
     private String accion = "guardar";
@@ -244,7 +243,7 @@ public class frmTrabajador extends javax.swing.JFrame {
         }
     }
 
-    private void eliminarCliente() {
+    private void eliminarTrabajador() {
         if (!txtId.getText().trim().isEmpty()) {
             int confirmar;
             confirmar = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de eliminar dicho cliente?", "CONFIRMA", JOptionPane.WARNING_MESSAGE);
@@ -990,7 +989,7 @@ public class frmTrabajador extends javax.swing.JFrame {
 
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-        eliminarCliente();
+        eliminarTrabajador();
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed

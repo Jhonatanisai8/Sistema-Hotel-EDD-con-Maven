@@ -19,6 +19,7 @@ public class frmHabitacion extends javax.swing.JFrame {
         FlatMaterialLighterIJTheme.setup();
         mostrarDatos("");
         inHabilitar();
+        ocultarColumnas();
     }
     private String accion = "guardar";
 

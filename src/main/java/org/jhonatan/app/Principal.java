@@ -14,8 +14,8 @@ public class Principal {
     public static void main(String[] args) {
         //formularioHabitaciones();
         //formularioProductos();
-        //formularioClientes();
-        formularioTrabajador();
+        formularioClientes();
+        //formularioTrabajador();
     }
 
     public static void formularioProductos() {
