@@ -2,6 +2,7 @@ package org.jhonatan.app;
 
 import org.jhonatan.app.Presentacion.frmClientes;
 import org.jhonatan.app.Presentacion.frmHabitacion;
+import org.jhonatan.app.Presentacion.frmInicio;
 import org.jhonatan.app.Presentacion.frmProductos;
 import org.jhonatan.app.Presentacion.frmTrabajador;
 
@@ -14,8 +15,14 @@ public class Principal {
     public static void main(String[] args) {
         //formularioHabitaciones();
         //formularioProductos();
-        formularioClientes();
+        //formularioClientes();
         //formularioTrabajador();
+        frmInicioa();
+    }
+
+    public static void frmInicioa() {
+        frmInicio d = new frmInicio();
+        d.setVisible(true);
     }
 
     public static void formularioProductos() {
