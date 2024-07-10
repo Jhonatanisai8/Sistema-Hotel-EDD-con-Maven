@@ -1,5 +1,6 @@
 package org.jhonatan.app.Presentacion;
 
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import javax.swing.JOptionPane;
 
 /**
@@ -10,6 +11,7 @@ public class frmInicio extends javax.swing.JFrame {
 
     public frmInicio() {
         initComponents();
+        FlatMaterialLighterIJTheme.setup();
         this.setExtendedState(frmInicio.MAXIMIZED_BOTH);
         this.setTitle("BIENNVENIDO AL SISTEMA");
     }
