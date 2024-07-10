@@ -1,5 +1,7 @@
 package org.jhonatan.app.Presentacion;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jhonatan
@@ -33,7 +35,7 @@ public class frmInicio extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        munSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,10 +148,15 @@ public class frmInicio extends javax.swing.JFrame {
 
         menuBar.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
-        jMenu5.setText("Salir");
-        jMenu5.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
-        menuBar.add(jMenu5);
+        munSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
+        munSalir.setText("Salir");
+        munSalir.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
+        munSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                munSalirMouseClicked(evt);
+            }
+        });
+        menuBar.add(munSalir);
 
         setJMenuBar(menuBar);
 
@@ -199,6 +206,14 @@ public class frmInicio extends javax.swing.JFrame {
         d.setVisible(true);
     }//GEN-LAST:event_munUsuariosAccesosActionPerformed
 
+    private void munSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_munSalirMouseClicked
+        int salir;
+        salir = JOptionPane.showConfirmDialog(rootPane, "¿Desea Salir?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+        if (salir == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_munSalirMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -240,7 +255,6 @@ public class frmInicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuBar menuBar;
@@ -249,6 +263,7 @@ public class frmInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem munPagos;
     private javax.swing.JMenuItem munProductos;
     private javax.swing.JMenuItem munReservasConsumos;
+    private javax.swing.JMenu munSalir;
     private javax.swing.JMenuItem munUsuariosAccesos;
     // End of variables declaration//GEN-END:variables
 
