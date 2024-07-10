@@ -28,7 +28,7 @@ public class frmInicio extends javax.swing.JFrame {
         munPagos = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        munUsuariosAccesos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -115,10 +115,15 @@ public class frmInicio extends javax.swing.JFrame {
         jMenu2.setText("Configuraciones");
         jMenu2.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
 
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (2).png"))); // NOI18N
-        jMenuItem2.setText("Usuarios y Accesos");
-        jMenu2.add(jMenuItem2);
+        munUsuariosAccesos.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        munUsuariosAccesos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (2).png"))); // NOI18N
+        munUsuariosAccesos.setText("Usuarios y Accesos");
+        munUsuariosAccesos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                munUsuariosAccesosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(munUsuariosAccesos);
 
         menuBar.add(jMenu2);
 
@@ -187,6 +192,13 @@ public class frmInicio extends javax.swing.JFrame {
         d.setVisible(true);
     }//GEN-LAST:event_munClientesActionPerformed
 
+    private void munUsuariosAccesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munUsuariosAccesosActionPerformed
+        frmTrabajador d = new frmTrabajador();
+        this.escritorio.add(d);
+        d.toFront();
+        d.setVisible(true);
+    }//GEN-LAST:event_munUsuariosAccesosActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -229,7 +241,6 @@ public class frmInicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuBar menuBar;
@@ -238,6 +249,7 @@ public class frmInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem munPagos;
     private javax.swing.JMenuItem munProductos;
     private javax.swing.JMenuItem munReservasConsumos;
+    private javax.swing.JMenuItem munUsuariosAccesos;
     // End of variables declaration//GEN-END:variables
 
 }
