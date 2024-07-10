@@ -17,7 +17,7 @@ public class frmLoginUsuario extends javax.swing.JFrame {
     //variables para el cursor
 
     int xMouse, yMouse;
-
+    
     public frmLoginUsuario() {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
@@ -36,7 +36,7 @@ public class frmLoginUsuario extends javax.swing.JFrame {
         }
         return "";
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -320,7 +320,7 @@ public class frmLoginUsuario extends javax.swing.JFrame {
             DefaultTableModel modelo;
             Trabajador trabajador = new Trabajador();
             TrabajadorImple trabajadorImple = new TrabajadorImple();
-
+            
             String campo = validarCampos(txtLogin, txtContrasenia);
             if (campo.equals("")) {
                 trabajador.setLogin(txtLogin.getText());
@@ -334,7 +334,7 @@ public class frmLoginUsuario extends javax.swing.JFrame {
                     frmInicio o = new frmInicio();
                     o.toFront();
                     o.setVisible(true);
-
+                    
                     frmInicio.lblIdPersona.setText(jTable1.getValueAt(0, 0).toString());
                     frmInicio.lblNombre.setText(jTable1.getValueAt(0, 1).toString());
                     frmInicio.lblAPATERNO.setText(jTable1.getValueAt(0, 2).toString());
@@ -343,8 +343,11 @@ public class frmLoginUsuario extends javax.swing.JFrame {
 
                     //si el inicio de sesion no es igual administrador
                     if (!frmInicio.lblAcceso.equals("Administrador")) {
-                        
+                        frmInicio.munArchivo.setEnabled(false);
+                        frmInicio.munConfid.setEnabled(false);
                     }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "ACCESO DENEGADO", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Verificar en " + campo, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
@@ -353,7 +356,7 @@ public class frmLoginUsuario extends javax.swing.JFrame {
             System.out.println("Error en loginBtnTxtMouseClicked: " + e.toString());
         }
     }//GEN-LAST:event_loginBtnTxtMouseClicked
-
+    
 
     private void loginBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnTxtMouseEntered
         loginBtn.setBackground(new Color(4, 143, 236));

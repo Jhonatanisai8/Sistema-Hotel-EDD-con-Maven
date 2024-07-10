@@ -28,7 +28,7 @@ public class frmInicio extends javax.swing.JFrame {
         lblAcceso = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        editMenu = new javax.swing.JMenu();
+        munArchivo = new javax.swing.JMenu();
         munHabitaciones = new javax.swing.JMenuItem();
         munProductos = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
@@ -36,7 +36,7 @@ public class frmInicio extends javax.swing.JFrame {
         munClientes = new javax.swing.JMenuItem();
         munPagos = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        munConfid = new javax.swing.JMenu();
         munUsuariosAccesos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -77,10 +77,10 @@ public class frmInicio extends javax.swing.JFrame {
         fileMenu.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
         menuBar.add(fileMenu);
 
-        editMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/carpeta.png"))); // NOI18N
-        editMenu.setMnemonic('e');
-        editMenu.setText("Archivo");
-        editMenu.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
+        munArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/carpeta.png"))); // NOI18N
+        munArchivo.setMnemonic('e');
+        munArchivo.setText("Archivo");
+        munArchivo.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
 
         munHabitaciones.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         munHabitaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/silencio.png"))); // NOI18N
@@ -91,7 +91,7 @@ public class frmInicio extends javax.swing.JFrame {
                 munHabitacionesActionPerformed(evt);
             }
         });
-        editMenu.add(munHabitaciones);
+        munArchivo.add(munHabitaciones);
 
         munProductos.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         munProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/comida.png"))); // NOI18N
@@ -102,9 +102,9 @@ public class frmInicio extends javax.swing.JFrame {
                 munProductosActionPerformed(evt);
             }
         });
-        editMenu.add(munProductos);
+        munArchivo.add(munProductos);
 
-        menuBar.add(editMenu);
+        menuBar.add(munArchivo);
 
         helpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reserva.png"))); // NOI18N
         helpMenu.setMnemonic('h');
@@ -145,9 +145,9 @@ public class frmInicio extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
         menuBar.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuraciones.png"))); // NOI18N
-        jMenu2.setText("Configuraciones");
-        jMenu2.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
+        munConfid.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuraciones.png"))); // NOI18N
+        munConfid.setText("Configuraciones");
+        munConfid.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
 
         munUsuariosAccesos.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         munUsuariosAccesos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (2).png"))); // NOI18N
@@ -157,9 +157,9 @@ public class frmInicio extends javax.swing.JFrame {
                 munUsuariosAccesosActionPerformed(evt);
             }
         });
-        jMenu2.add(munUsuariosAccesos);
+        munConfid.add(munUsuariosAccesos);
 
-        menuBar.add(jMenu2);
+        menuBar.add(munConfid);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/computadora.png"))); // NOI18N
         jMenu3.setText("Herramientas");
@@ -279,12 +279,10 @@ public class frmInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu editMenu;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem3;
@@ -295,7 +293,9 @@ public class frmInicio extends javax.swing.JFrame {
     public static javax.swing.JLabel lblIdPersona;
     public static javax.swing.JLabel lblNombre;
     private javax.swing.JMenuBar menuBar;
+    public static javax.swing.JMenu munArchivo;
     private javax.swing.JMenuItem munClientes;
+    public static javax.swing.JMenu munConfid;
     private javax.swing.JMenuItem munHabitaciones;
     private javax.swing.JMenuItem munPagos;
     private javax.swing.JMenuItem munProductos;
