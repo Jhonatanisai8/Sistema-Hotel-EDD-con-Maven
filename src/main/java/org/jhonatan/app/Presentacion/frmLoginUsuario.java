@@ -2,6 +2,7 @@ package org.jhonatan.app.Presentacion;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -342,7 +343,7 @@ public class frmLoginUsuario extends javax.swing.JFrame {
                     frmInicio.lblAcceso.setText(jTable1.getValueAt(0, 4).toString());
 
                     //si el inicio de sesion no es igual administrador
-                    if (!frmInicio.lblAcceso.equals("Administrador")) {
+                    if (!frmInicio.lblAcceso.getText().equals("Administrador")) {
                         frmInicio.munArchivo.setEnabled(false);
                         frmInicio.munConfid.setEnabled(false);
                     }
@@ -352,7 +353,7 @@ public class frmLoginUsuario extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Verificar en " + campo, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             }
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             System.out.println("Error en loginBtnTxtMouseClicked: " + e.toString());
         }
     }//GEN-LAST:event_loginBtnTxtMouseClicked
