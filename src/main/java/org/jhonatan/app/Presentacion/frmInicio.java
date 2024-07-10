@@ -5,13 +5,13 @@ package org.jhonatan.app.Presentacion;
  * @author Jhonatan
  */
 public class frmInicio extends javax.swing.JFrame {
-    
+
     public frmInicio() {
         initComponents();
         this.setExtendedState(frmInicio.MAXIMIZED_BOTH);
         this.setTitle("BIENNVENIDO AL SISTEMA");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -23,9 +23,9 @@ public class frmInicio extends javax.swing.JFrame {
         munHabitaciones = new javax.swing.JMenuItem();
         munProductos = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        munReservasConsumos = new javax.swing.JMenuItem();
+        munClientes = new javax.swing.JMenuItem();
+        munPagos = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -77,27 +77,32 @@ public class frmInicio extends javax.swing.JFrame {
         helpMenu.setText("Reservas");
         helpMenu.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
 
-        contentMenuItem.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
-        contentMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Reservas y consumos");
-        contentMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        munReservasConsumos.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        munReservasConsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
+        munReservasConsumos.setMnemonic('c');
+        munReservasConsumos.setText("Reservas y consumos");
+        munReservasConsumos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contentMenuItemActionPerformed(evt);
+                munReservasConsumosActionPerformed(evt);
             }
         });
-        helpMenu.add(contentMenuItem);
+        helpMenu.add(munReservasConsumos);
 
-        aboutMenuItem.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
-        aboutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (2).png"))); // NOI18N
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("Clientes");
-        helpMenu.add(aboutMenuItem);
+        munClientes.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        munClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (2).png"))); // NOI18N
+        munClientes.setMnemonic('a');
+        munClientes.setText("Clientes");
+        munClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                munClientesActionPerformed(evt);
+            }
+        });
+        helpMenu.add(munClientes);
 
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/metodo-de-pago.png"))); // NOI18N
-        jMenuItem1.setText("Pagos");
-        helpMenu.add(jMenuItem1);
+        munPagos.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        munPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/metodo-de-pago.png"))); // NOI18N
+        munPagos.setText("Pagos");
+        helpMenu.add(munPagos);
 
         menuBar.add(helpMenu);
 
@@ -157,9 +162,9 @@ public class frmInicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void contentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentMenuItemActionPerformed
+    private void munReservasConsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munReservasConsumosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_contentMenuItemActionPerformed
+    }//GEN-LAST:event_munReservasConsumosActionPerformed
 
     private void munProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munProductosActionPerformed
         frmProductos d = new frmProductos();
@@ -174,7 +179,14 @@ public class frmInicio extends javax.swing.JFrame {
         d.toFront();
         d.setVisible(true);
     }//GEN-LAST:event_munHabitacionesActionPerformed
-    
+
+    private void munClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munClientesActionPerformed
+        frmClientes d = new frmClientes();
+        this.escritorio.add(d);
+        d.toFront();
+        d.setVisible(true);
+    }//GEN-LAST:event_munClientesActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -208,8 +220,6 @@ public class frmInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenu editMenu;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu fileMenu;
@@ -219,13 +229,15 @@ public class frmInicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem munClientes;
     private javax.swing.JMenuItem munHabitaciones;
+    private javax.swing.JMenuItem munPagos;
     private javax.swing.JMenuItem munProductos;
+    private javax.swing.JMenuItem munReservasConsumos;
     // End of variables declaration//GEN-END:variables
 
 }
