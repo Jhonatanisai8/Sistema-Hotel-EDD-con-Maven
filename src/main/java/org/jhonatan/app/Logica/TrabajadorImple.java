@@ -198,4 +198,59 @@ public class TrabajadorImple implements TrabajadorDao {
         }
     }
 
+    @Override
+    public DefaultTableModel login(String login, String password) {
+        Connection conex = conexion.conectarBD();
+        DefaultTableModel modelo;
+        String[] cabezera = {"ID", "NOMBRE", "AP. PATERNO", "AP. MATERNO", "ACCESO", "LOGIN", "PASSWORD", "ESTADO"};
+        String[] registros = new String[cabezera.length];
+        totalRegistros = 0;
+
+        modelo = new DefaultTableModel(null, cabezera);
+
+        //consulta
+        sql = "SELECT p.idpersona,"
+                + "p.nombre,"
+                + "p.apateno,"
+                + "p.amaterno,"
+                + "t.acceso, "
+                +"t.login,"
+                +"t.password,"
+                +"t.estado"
+                + " FROM persona p INNER JOIN trabajador t "
+                + " ON p.idpersona = t.idpersona WHERE t.login = '" + login +"' and t.password = '"+password+"'"
+                + " and t.estado = 'A'";
+
+        try {
+            Statement st = conex.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            //recorremos los registros
+            while (rs.next()) {
+                registros[0] = rs.getString("idpersona");
+                registros[1] = rs.getString("nombre");
+                registros[2] = rs.getString("apateno");
+                registros[3] = rs.getString("amaterno");
+                
+                registros[4] = rs.getString("acceso");
+                registros[5] = rs.getString("login");
+                registros[6] = rs.getString("password");
+                registros[7] = rs.getString("estado");
+
+                totalRegistros++;
+                modelo.addRow(registros);
+            }
+            // conexion.desconectarBD();
+            return modelo;
+        } catch (SQLException e) {
+            System.out.println("Error al mostrar datos de la tabla trabahajador; " + e.toString());
+            return null;
+        } finally {
+            try {
+                conexion.desconectarBD();
+            } catch (SQLException ex) {
+                System.out.println("Error la cerrar la conexion en el metodo mostrar trabajadores");
+            }
+        }
+    }
 }

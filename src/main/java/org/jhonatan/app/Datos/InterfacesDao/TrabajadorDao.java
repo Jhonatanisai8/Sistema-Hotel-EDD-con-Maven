@@ -17,4 +17,6 @@ public interface TrabajadorDao {
     public void modificarTrabajador(Trabajador trabajador);
 
     public void eliminarTrabajador(Trabajador trabajador);
+
+    public DefaultTableModel login(String login, String password);
 }
