@@ -1,4 +1,3 @@
-
 package org.jhonatan.app.Presentacion;
 
 /**
@@ -6,16 +5,18 @@ package org.jhonatan.app.Presentacion;
  * @author Jhonatan
  */
 public class frmInicio extends javax.swing.JFrame {
-
+    
     public frmInicio() {
         initComponents();
+        this.setExtendedState(frmInicio.MAXIMIZED_BOTH);
+        this.setTitle("BIENNVENIDO AL SISTEMA");
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         editMenu = new javax.swing.JMenu();
@@ -51,6 +52,11 @@ public class frmInicio extends javax.swing.JFrame {
         pasteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/silencio.png"))); // NOI18N
         pasteMenuItem.setMnemonic('p');
         pasteMenuItem.setText("Habitaciones");
+        pasteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pasteMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(pasteMenuItem);
 
         deleteMenuItem.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
@@ -141,11 +147,11 @@ public class frmInicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1253, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1253, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
 
         pack();
@@ -159,6 +165,13 @@ public class frmInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteMenuItemActionPerformed
 
+    private void pasteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteMenuItemActionPerformed
+        frmHabitacion d = new frmHabitacion();
+        this.escritorio.add(d);
+        d.toFront();
+        d.setVisible(true);
+    }//GEN-LAST:event_pasteMenuItemActionPerformed
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -195,8 +208,8 @@ public class frmInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenuItem deleteMenuItem;
-    private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenu jMenu1;

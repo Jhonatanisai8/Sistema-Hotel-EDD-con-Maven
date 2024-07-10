@@ -10,7 +10,7 @@ import org.jhonatan.app.Logica.ProductoImplementacion;
  *
  * @author Jhonatan
  */
-public class frmProductos extends javax.swing.JFrame {
+public class frmProductos extends javax.swing.JInternalFrame {
 
     public frmProductos() {
         initComponents();
@@ -207,6 +207,7 @@ public class frmProductos extends javax.swing.JFrame {
         lblTotalRegistros = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de Producto:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DialogInput", 0, 12))); // NOI18N
 

@@ -10,7 +10,7 @@ import org.jhonatan.app.Logica.ClienteImple;
  *
  * @author Jhonatan
  */
-public class frmClientes extends javax.swing.JFrame {
+public class frmClientes extends javax.swing.JInternalFrame {
 
     public frmClientes() {
         initComponents();

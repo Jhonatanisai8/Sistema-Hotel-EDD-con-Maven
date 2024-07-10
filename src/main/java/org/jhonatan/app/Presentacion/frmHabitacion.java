@@ -10,7 +10,7 @@ import org.jhonatan.app.Logica.FHabitacion;
  *
  * @author JHONATAN
  */
-public class frmHabitacion extends javax.swing.JFrame {
+public class frmHabitacion extends javax.swing.JInternalFrame {
 
     public frmHabitacion() {
         initComponents();
@@ -51,6 +51,8 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtPrecioUnitario.setText("");
         txtCaracteristicas.setText("");
         txtDescripcion.setText("");
+        txtNumeroHabi.setText("");
+        cbxPiso.setSelectedIndex(0);
     }
 
     void habilitar() {
@@ -74,6 +76,8 @@ public class frmHabitacion extends javax.swing.JFrame {
         txtPrecioUnitario.setText("");
         txtCaracteristicas.setText("");
         txtDescripcion.setText("");
+        txtNumeroHabi.setText("");
+        cbxPiso.setSelectedIndex(0);
     }
 
     void mostrarDatos(String buscar) {
