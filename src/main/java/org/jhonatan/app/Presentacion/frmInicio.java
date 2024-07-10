@@ -39,20 +39,29 @@ public class frmInicio extends javax.swing.JFrame {
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/casa (5).png"))); // NOI18N
         fileMenu.setMnemonic('f');
         fileMenu.setText("Sis.Reserva");
+        fileMenu.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
         menuBar.add(fileMenu);
 
         editMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/carpeta.png"))); // NOI18N
         editMenu.setMnemonic('e');
         editMenu.setText("Archivo");
+        editMenu.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
 
+        pasteMenuItem.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         pasteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/silencio.png"))); // NOI18N
         pasteMenuItem.setMnemonic('p');
         pasteMenuItem.setText("Habitaciones");
         editMenu.add(pasteMenuItem);
 
+        deleteMenuItem.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         deleteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/comida.png"))); // NOI18N
         deleteMenuItem.setMnemonic('d');
         deleteMenuItem.setText("Productos");
+        deleteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(deleteMenuItem);
 
         menuBar.add(editMenu);
@@ -60,7 +69,9 @@ public class frmInicio extends javax.swing.JFrame {
         helpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reserva.png"))); // NOI18N
         helpMenu.setMnemonic('h');
         helpMenu.setText("Reservas");
+        helpMenu.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
 
+        contentMenuItem.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         contentMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
         contentMenuItem.setMnemonic('c');
         contentMenuItem.setText("Reservas y consumos");
@@ -71,11 +82,13 @@ public class frmInicio extends javax.swing.JFrame {
         });
         helpMenu.add(contentMenuItem);
 
+        aboutMenuItem.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         aboutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (2).png"))); // NOI18N
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("Clientes");
         helpMenu.add(aboutMenuItem);
 
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/metodo-de-pago.png"))); // NOI18N
         jMenuItem1.setText("Pagos");
         helpMenu.add(jMenuItem1);
@@ -84,11 +97,14 @@ public class frmInicio extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consulta.png"))); // NOI18N
         jMenu1.setText("Consultas");
+        jMenu1.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
         menuBar.add(jMenu1);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuraciones.png"))); // NOI18N
         jMenu2.setText("Configuraciones");
+        jMenu2.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
 
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (2).png"))); // NOI18N
         jMenuItem2.setText("Usuarios y Accesos");
         jMenu2.add(jMenuItem2);
@@ -97,14 +113,18 @@ public class frmInicio extends javax.swing.JFrame {
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/computadora.png"))); // NOI18N
         jMenu3.setText("Herramientas");
+        jMenu3.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
         menuBar.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ayuda.png"))); // NOI18N
         jMenu4.setText("Ayuda");
+        jMenu4.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
 
+        jMenuItem3.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         jMenuItem3.setText("Acerca de ...");
         jMenu4.add(jMenuItem3);
 
+        jMenuItem4.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         jMenuItem4.setText("Ayuda");
         jMenu4.add(jMenuItem4);
 
@@ -112,6 +132,7 @@ public class frmInicio extends javax.swing.JFrame {
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
         jMenu5.setText("Salir");
+        jMenu5.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
         menuBar.add(jMenu5);
 
         setJMenuBar(menuBar);
@@ -120,7 +141,7 @@ public class frmInicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1202, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1253, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,6 +154,10 @@ public class frmInicio extends javax.swing.JFrame {
     private void contentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contentMenuItemActionPerformed
+
+    private void deleteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteMenuItemActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
