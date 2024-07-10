@@ -20,8 +20,8 @@ public class frmInicio extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         editMenu = new javax.swing.JMenu();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
+        munHabitaciones = new javax.swing.JMenuItem();
+        munProductos = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -48,27 +48,27 @@ public class frmInicio extends javax.swing.JFrame {
         editMenu.setText("Archivo");
         editMenu.setFont(new java.awt.Font("SimHei", 0, 15)); // NOI18N
 
-        pasteMenuItem.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
-        pasteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/silencio.png"))); // NOI18N
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Habitaciones");
-        pasteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        munHabitaciones.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        munHabitaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/silencio.png"))); // NOI18N
+        munHabitaciones.setMnemonic('p');
+        munHabitaciones.setText("Habitaciones");
+        munHabitaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pasteMenuItemActionPerformed(evt);
+                munHabitacionesActionPerformed(evt);
             }
         });
-        editMenu.add(pasteMenuItem);
+        editMenu.add(munHabitaciones);
 
-        deleteMenuItem.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
-        deleteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/comida.png"))); // NOI18N
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Productos");
-        deleteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        munProductos.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        munProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/comida.png"))); // NOI18N
+        munProductos.setMnemonic('d');
+        munProductos.setText("Productos");
+        munProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteMenuItemActionPerformed(evt);
+                munProductosActionPerformed(evt);
             }
         });
-        editMenu.add(deleteMenuItem);
+        editMenu.add(munProductos);
 
         menuBar.add(editMenu);
 
@@ -161,16 +161,19 @@ public class frmInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_contentMenuItemActionPerformed
 
-    private void deleteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteMenuItemActionPerformed
+    private void munProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munProductosActionPerformed
+        frmProductos d = new frmProductos();
+        this.escritorio.add(d);
+        d.toFront();
+        d.setVisible(true);
+    }//GEN-LAST:event_munProductosActionPerformed
 
-    private void pasteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteMenuItemActionPerformed
+    private void munHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munHabitacionesActionPerformed
         frmHabitacion d = new frmHabitacion();
         this.escritorio.add(d);
         d.toFront();
         d.setVisible(true);
-    }//GEN-LAST:event_pasteMenuItemActionPerformed
+    }//GEN-LAST:event_munHabitacionesActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -207,7 +210,6 @@ public class frmInicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JMenu editMenu;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu fileMenu;
@@ -222,7 +224,8 @@ public class frmInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem pasteMenuItem;
+    private javax.swing.JMenuItem munHabitaciones;
+    private javax.swing.JMenuItem munProductos;
     // End of variables declaration//GEN-END:variables
 
 }
