@@ -334,6 +334,17 @@ public class frmLoginUsuario extends javax.swing.JFrame {
                     frmInicio o = new frmInicio();
                     o.toFront();
                     o.setVisible(true);
+
+                    frmInicio.lblIdPersona.setText(jTable1.getValueAt(0, 0).toString());
+                    frmInicio.lblNombre.setText(jTable1.getValueAt(0, 1).toString());
+                    frmInicio.lblAPATERNO.setText(jTable1.getValueAt(0, 2).toString());
+                    frmInicio.lblAMaterno.setText(jTable1.getValueAt(0, 3).toString());
+                    frmInicio.lblAcceso.setText(jTable1.getValueAt(0, 4).toString());
+
+                    //si el inicio de sesion no es igual administrador
+                    if (!frmInicio.lblAcceso.equals("Administrador")) {
+                        
+                    }
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Verificar en " + campo, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);

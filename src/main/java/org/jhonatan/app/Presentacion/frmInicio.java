@@ -289,11 +289,11 @@ public class frmInicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JLabel lblAMaterno;
-    private javax.swing.JLabel lblAPATERNO;
+    public static javax.swing.JLabel lblAMaterno;
+    public static javax.swing.JLabel lblAPATERNO;
     public static javax.swing.JLabel lblAcceso;
-    private javax.swing.JLabel lblIdPersona;
-    private javax.swing.JLabel lblNombre;
+    public static javax.swing.JLabel lblIdPersona;
+    public static javax.swing.JLabel lblNombre;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem munClientes;
     private javax.swing.JMenuItem munHabitaciones;
