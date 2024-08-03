@@ -345,7 +345,7 @@ public class frmLoginUsuario extends javax.swing.JFrame {
                     //si el inicio de sesion no es igual administrador
                     if (!frmInicio.lblAcceso.getText().equals("Administrador")) {
                         frmInicio.munArchivo.setEnabled(false);
-                        frmInicio.munConfid.setEnabled(false);
+                        frmInicio.munConfiguraciones.setEnabled(false);
                     }
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "ACCESO DENEGADO", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);

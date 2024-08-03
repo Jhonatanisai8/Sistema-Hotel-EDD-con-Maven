@@ -18,8 +18,8 @@ public class Principal {
         //formularioProductos();
         //formularioClientes();
         //formularioTrabajador();
-        //frmInicioa();
-        frmlogin();
+        frmInicioa();
+        //frmlogin();
     }
 
     public static void frmlogin() {
